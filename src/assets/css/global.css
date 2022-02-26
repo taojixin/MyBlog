@@ -1,0 +1,14 @@
+/* 全局演示表 */
+html, body, #app {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  min-width: 750px;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  
+  list-style: none;
+}
