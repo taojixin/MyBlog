@@ -5,10 +5,20 @@ html, body, #app {
   margin: 0;
   min-width: 750px;
 }
+/* * {
+  margin: 0;
+  padding: 0;
+} */
+body {
+  background: url(../background/点点.jpg) no-repeat;
+  /* 背景图片不随鼠标滚动而滚动 */
+  background-attachment: fixed;
+  /*  对图片进行等比缩放，如有溢出部分则会被裁剪隐藏 */
+  background-size: cover;
+}
 a {
   text-decoration: none;
 }
 ul {
-  
   list-style: none;
 }

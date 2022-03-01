@@ -9,6 +9,10 @@ import './assets/fonts/iconfont.css'
 // 导入全局样式表
 import './assets/css/global.css'
 
+
+
+
+
 Vue.config.productionTip = false
 
 new Vue({

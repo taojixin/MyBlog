@@ -1,28 +1,20 @@
 <template>
   <div id="app">
-    <Main>
-      <template v-slot:center="value">
-        {{value.value}}
-        <Content></Content>
-      </template>
-    </Main>
+    <!-- <router-view></router-view> -->
+    <Main></Main>
+    <!-- <Login></Login> -->
   </div>
 </template>
 
 <script>
-import Main from "./components/main/Main.vue";
-import Content from "./components/Content.vue";
+import Main from "./components/Main.vue";
+import Login from "./view/animation/Login.vue"
 export default {
-  components: { Main, Content },
   name: "app",
-  created() {
-
-  },
-  methods: {
-    
-  }
+  components: { Main, Login},
 };
 </script>
 
-<style>
+<style lang="less" scoped>
+
 </style>
