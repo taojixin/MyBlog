@@ -38,7 +38,7 @@ export default {};
   // 定位背景图像为正中间
   background-position-x: center;
   // linear:动画从头到尾速度相同 infinite:动画无限次播放
-  animation: animateBg 5s linear infinite;
+  // animation: animateBg 5s linear infinite;
 }
 
 span {
@@ -54,6 +54,7 @@ span {
     0 0 0 8px rgba(255, 255, 255, 0.1), 0 0 20px rgba(255, 255, 255, 1);
   // 执行动画
   animation: animate 3s linear infinite;
+  
 
   // 拖尾效果
   &::before {

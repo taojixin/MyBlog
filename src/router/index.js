@@ -1,31 +1,45 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Main from '../components/Main.vue'
-import introduce from '../components/1.introduce/Introduce.vue'
-import Resume from '../components/2.resume/Resume.vue'
-import Demo from '../components/3.demo/Demo.vue'
-import Study from '../components/4.study/Study.vue'
-import Blog from '../components/5.blog/Blog.vue'
-import Contact from '../components/6.contact/Contact.vue'
-import Login from '../components//login/Login.vue'
-import Time from '../components/other/Time.vue'
-import Btn from '../components/other/Btn.vue'
+
+import introduce from '@/view/Introduce'
+import Resume from '@/view/Resume'
+import Demo from '@/view/Demo'
+import Study from '@/view/Study'
+import Blog from '@/view/Blog'
+import Contact from '@/view/Contact'
+
+import Starrysky from '@/view/other/Starrysky'
+import Sidenav from '@/view/other/Sidenav'
+
+import Home from '@/components/Home'
+
 
 Vue.use(VueRouter)
 
 const routes = [
-  // { path: '/', redirect: '/button', },
-  { path: '/main', component: Main, },
-  { path: '/introduce', component: introduce },
-  { path: '/resume', component: Resume },
-  { path: '/demo', component: Demo },
-  { path: '/study', component: Study },
-  { path: '/blog', component: Blog },
-  { path: '/contact', component: Contact },
-  { path: '/login', component: Login },
-  { path: '/time', component: Time },
-  { path: '/button', component: Btn },
+  { path: '/', redirect: '/sidenav', },
 
+  { path: '/Starrysky', component: Starrysky },
+  {
+    path: '/sidenav', component: Sidenav, children: [
+      { path: '/introduce', component: introduce },
+      { path: '/resume', component: Resume },
+      { path: '/demo', component: Demo },
+      { path: '/study', component: Study },
+      { path: '/blog', component: Blog },
+      { path: '/contact', component: Contact },
+    ],
+  },
+  // {
+  //   path: '/home', component: Home, children: [
+  //     { path: '/introduce', component: introduce },
+  //     { path: '/resume', component: Resume },
+  //     { path: '/demo', component: Demo },
+  //     { path: '/study', component: Study },
+  //     { path: '/blog', component: Blog },
+  //     { path: '/contact', component: Contact },
+  //   ]
+  // }
 ]
 
 const router = new VueRouter({

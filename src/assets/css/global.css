@@ -10,7 +10,8 @@ html, body, #app {
   padding: 0;
 } */
 body {
-  background: url(../background/点点.jpg) no-repeat;
+  background: url(../background/星空.jpg) no-repeat;
+  /* background-color: #263238; */
   /* 背景图片不随鼠标滚动而滚动 */
   background-attachment: fixed;
   /*  对图片进行等比缩放，如有溢出部分则会被裁剪隐藏 */

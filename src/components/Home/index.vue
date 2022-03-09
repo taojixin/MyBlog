@@ -3,10 +3,10 @@
     <!-- 顶部 -->
     <header class="header">
       <h2>
-        <img src="../assets/Headportrait.jpg" alt="" />
+        <img src="@/assets/Headportrait.jpg" alt="" />
         <span>Liberty's blog</span>
       </h2>
-      <Btn class="abc" :msg="msg"></Btn>
+      <!-- <Btn class="abc" :msg="msg"></Btn> -->
     </header>
     <!-- 内容区域 -->
     <div class="container">
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import Btn from "../components/other/Btn.vue";
+// import Btn from "@/view/other/Btn";
 export default {
   data() {
     return {
@@ -59,7 +59,6 @@ export default {
     };
   },
   components: {
-    Btn,
   },
   methods: {
     // 跳转的函数
