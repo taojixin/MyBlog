@@ -51,7 +51,6 @@ export default {
 .introduce {
   width: 100%;
   height: 100%;
-  min-width: 730px;
   // 半透明背景
   background-color: rgba(0, 0, 0, 0.55);
   // 背景模糊（毛玻璃）

@@ -105,7 +105,7 @@ export default {
 }
 .left-box {
   width: 250px;
-  height: 100%;
+  min-height: 480px;
   // 半透明背景
   background-color: rgba(0, 0, 0, 0.55);
   // 背景模糊（毛玻璃）
@@ -186,6 +186,9 @@ export default {
   position: relative;
   border: 2px solid blue;
   margin: 0px 20px;
+  
+  min-width: 730px;
+  min-height: 400px;
 
   .handler {
     width: 10px;

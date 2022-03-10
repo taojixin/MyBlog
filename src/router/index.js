@@ -13,6 +13,8 @@ import Sidenav from '@/view/other/Sidenav'
 
 import Home from '@/components/Home'
 
+import VueBasic from '@/view/notes/VueBasic'
+
 
 Vue.use(VueRouter)
 
@@ -25,7 +27,12 @@ const routes = [
       { path: '/introduce', component: introduce },
       { path: '/resume', component: Resume },
       { path: '/demo', component: Demo },
-      { path: '/study', component: Study },
+      {
+        path: '/study', component: Study,
+        children: [
+          { path: '/vuebasic', name: 'VueBasic', component: VueBasic }
+        ]
+      },
       { path: '/blog', component: Blog },
       { path: '/contact', component: Contact },
     ],
