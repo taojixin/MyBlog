@@ -11,10 +11,9 @@
 <script>
 import Home from '@/components/Home'
 import Login from '@/components/Login'
-import Sidenav from '@/view/other/Sidenav.vue'
 export default {
   name: "app",
-  components: { Home, Login, Sidenav},
+  components: { Home, Login},
 };
 </script>
 

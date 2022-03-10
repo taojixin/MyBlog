@@ -9,7 +9,6 @@ import Blog from '@/view/Blog'
 import Contact from '@/view/Contact'
 
 import Starrysky from '@/view/other/Starrysky'
-import Sidenav from '@/view/other/Sidenav'
 
 import Home from '@/components/Home'
 
@@ -19,11 +18,10 @@ import VueBasic from '@/view/notes/VueBasic'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', redirect: '/sidenav', },
-
+  { path: '/', redirect: '/Home', },
   { path: '/Starrysky', component: Starrysky },
   {
-    path: '/sidenav', component: Sidenav, children: [
+    path: '/home', component: Home, children: [
       { path: '/introduce', component: introduce },
       { path: '/resume', component: Resume },
       { path: '/demo', component: Demo },
