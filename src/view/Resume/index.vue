@@ -5,6 +5,24 @@
       <div class="left_top">
         <img src="@/assets/Headportrait.jpg" alt="" />
       </div>
+      <div class="left_bottom">
+        <!-- 标题 -->
+        <div class="title">
+
+        </div>
+        <!-- 个人信息 -->
+        <div class="information">
+
+        </div>
+        <!-- 求职意向 -->
+        <div class="jobs">
+
+        </div>
+        <!-- 教育背景 -->
+        <div class="education">
+          
+        </div>
+      </div>
     </div>
     <!-- 右侧 -->
     <div class="right"></div>

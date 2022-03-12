@@ -1,25 +1,25 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import introduce from '@/view/Introduce'
-import Resume from '@/view/Resume'
-import Demo from '@/view/Demo'
-import Study from '@/view/Study'
-import Blog from '@/view/Blog'
-import Contact from '@/view/Contact'
+// 首页
+const Home = () => import('@/components/Home')
 
-import Starrysky from '@/view/other/Starrysky'
+// 侧边栏导航
+const introduce = () => import('@/view/Introduce')
+const Resume = () => import('@/view/Resume')
+const Demo = () => import('@/view/Demo')
+const Study = () => import('@/view/Study')
+const Blog = () => import('@/view/Blog')
+const Contact = () => import('@/view/Contact')
 
-import Home from '@/components/Home'
-
-import VueBasic from '@/view/notes/VueBasic'
+// 笔记
+const VueBasic = () => import('@/view/notes/VueBasic')
 
 
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/', redirect: '/Home', },
-  { path: '/Starrysky', component: Starrysky },
   {
     path: '/home', component: Home, children: [
       { path: '/introduce', component: introduce },
@@ -28,13 +28,15 @@ const routes = [
       {
         path: '/study', component: Study,
         children: [
-          { path: '/vuebasic', name: 'VueBasic', component: VueBasic }
+          // { path: '/vuebasic', name: 'VueBasic', component: VueBasic },
         ]
       },
       { path: '/blog', component: Blog },
       { path: '/contact', component: Contact },
     ],
+
   },
+  { path: '/vuebasic', component: VueBasic },
   // {
   //   path: '/home', component: Home, children: [
   //     { path: '/introduce', component: introduce },

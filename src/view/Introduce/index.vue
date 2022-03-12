@@ -65,6 +65,21 @@ header {
     color: #0f3d93;
     margin: 0;
     text-align: center;
+    /* 自定义属性--c，可通过var函数对其调用 */
+    --c: #083588;
+    /* 调用自定义属性--c，设置文字阴影（发光效果） */
+    text-shadow: 0 0 10px var(--c), 0 0 20px var(--c), 0 0 40px var(--c),
+      0 0 80px var(--c), 0 0 160px var(--c);
+    /* 执行动画：动画名 时长 线性的 无限次播放 */
+    // animation: animate 5s linear infinite;
+
+    /* 定义动画 */
+    @keyframes animate {
+      to {
+        /* 色相旋转滤镜（设置度数可改变颜色） */
+        filter: hue-rotate(360deg);
+      }
+    }
   }
   hr {
     width: 90%;
@@ -89,7 +104,6 @@ article {
     display: flex;
     flex-direction: column;
     flex: 1;
-    // border: 1px solid blue;
 
     img {
       width: 200px;
@@ -97,6 +111,7 @@ article {
       border-radius: 100px;
       margin: 10 auto;
     }
+
   }
 
   .box_right {

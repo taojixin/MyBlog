@@ -32,7 +32,7 @@ export default {};
   left: 0;
   width: 100%;
   height: 100%;
-  background: url(../../assets/background/星空.jpg);
+  background: url(../../assets/xinkong.jpg);
   // 背景图铺满整个区域，多出的隐藏
   background-size: cover;
   // 定位背景图像为正中间

@@ -67,9 +67,11 @@ export default {
         console.log(this.classList);
         if (!this.classList.contains("close")) {
           left_box.style.width = 0;
+          left_box.style.opacity = 0;
           this.classList.add("close");
         } else {
           left_box.style.width = 250 + "px";
+          left_box.style.opacity = 1;
           this.classList.remove("close");
         }
       });

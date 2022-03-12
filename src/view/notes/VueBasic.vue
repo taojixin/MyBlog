@@ -1,91 +1,17 @@
 <template>
-  <div class="vuebase">
+  <div class="vuebasic">
     <div class="content markdown-body" v-html="vueMarkdown"></div>
   </div>
 </template>
 
 <script>
+import '@/assets/css/markdown.css'
 export default {
   data() {
     return {
-      vueMarkdown: `
-    <ul>
-<li><a href="#%E5%88%9D%E5%A7%8Bvue">初始Vue</a></li>
-<li><a href="#%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95">模板语法</a>
-<ul>
-<li><a href="#1%E6%8F%92%E5%80%BC%E8%AF%AD%E6%B3%95">1.插值语法</a></li>
-<li><a href="#2%E6%8C%87%E4%BB%A4%E8%AF%AD%E6%B3%95">2.指令语法</a></li>
-</ul>
-</li>
-<li><a href="#%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A">数据绑定</a></li>
-<li><a href="#data%E4%B8%8Eel%E7%9A%842%E7%A7%8D%E5%86%99%E6%B3%95">data与el的2种写法</a>
-<ul>
-<li><a href="#1el2%E7%A7%8D%E5%86%99%E6%B3%95">1.el2种写法</a></li>
-<li><a href="#2data2%E7%A7%8D%E5%86%99%E6%B3%95">2.data2种写法</a></li>
-</ul>
-</li>
-<li><a href="#mvvm%E6%A8%A1%E5%9E%8B">MVVM模型</a></li>
-<li><a href="#%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86">数据代理</a></li>
-<li><a href="#%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86">事件处理</a>
-<ul>
-<li><a href="#1%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">1.事件的基本使用</a></li>
-<li><a href="#2%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6">2.事件修饰符</a></li>
-<li><a href="#3%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6">3.键盘事件</a></li>
-</ul>
-</li>
-<li><a href="#%E5%B1%9E%E6%80%A7%E8%AE%A1%E7%AE%97">属性计算</a></li>
-<li><a href="#%E7%9B%91%E8%A7%86">监视</a>
-<ul>
-<li><a href="#1%E7%9B%91%E8%A7%86%E5%B1%9E%E6%80%A7watch">1.监视属性(watch)</a></li>
-<li><a href="#2%E6%B7%B1%E5%BA%A6%E7%9B%91%E8%A7%86%E5%B1%9E%E6%80%A7">2.深度监视属性</a></li>
-<li><a href="#3%E7%9B%91%E8%A7%86%E5%B1%9E%E6%80%A7%E7%AE%80%E5%86%99">3.监视属性简写</a></li>
-<li><a href="#4computed%E5%92%8Cwatch%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB">4.computed和watch之间的区别</a></li>
-<li><a href="#5%E4%B8%A4%E4%B8%AA%E9%87%8D%E8%A6%81%E7%9A%84%E5%B0%8F%E5%8E%9F%E5%88%99">5.两个重要的小原则</a></li>
-</ul>
-</li>
-<li><a href="#%E7%BB%91%E5%AE%9A%E6%A0%B7%E5%BC%8F">绑定样式</a>
-<ul>
-<li><a href="#1class%E6%A0%B7%E5%BC%8F">1.class样式</a></li>
-<li><a href="#2style%E6%A0%B7%E5%BC%8F">2.style样式</a></li>
-</ul>
-</li>
-<li><a href="#%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93">条件渲染</a>
-<ul>
-<li><a href="#1v-if">1.v-if</a></li>
-<li><a href="#2v-show">2.v-show</a></li>
-</ul>
-</li>
-<li><a href="#%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93">列表渲染</a>
-<ul>
-<li><a href="#1%E5%88%97%E8%A1%A8%E5%9F%BA%E6%9C%AC">1.列表基本</a></li>
-<li><a href="#2key%E7%9A%84%E5%8E%9F%E7%90%86">2.key的原理</a></li>
-<li><a href="#3%E5%88%97%E8%A1%A8%E8%BF%87%E6%BB%A4">3.列表过滤</a></li>
-<li><a href="#4%E5%88%97%E8%A1%A8%E6%8E%92%E5%BA%8F">4.列表排序</a></li>
-</ul>
-</li>
-<li><a href="#%E6%95%B0%E6%8D%AE%E7%9B%91%E8%A7%86%E5%8F%8A%E5%85%B6%E5%8E%9F%E7%90%86">数据监视及其原理</a>
-<ul>
-<li><a href="#1-vue%E4%BC%9A%E7%9B%91%E8%A7%86data%E4%B8%AD%E6%89%80%E6%9C%89%E5%B1%82%E6%AC%A1%E7%9A%84%E6%95%B0%E6%8D%AE">1. vue会监视data中所有层次的数据。</a></li>
-<li><a href="#2-%E5%A6%82%E4%BD%95%E7%9B%91%E6%B5%8B%E5%AF%B9%E8%B1%A1%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE">2. 如何监测对象中的数据？</a></li>
-<li><a href="#3-%E5%A6%82%E4%BD%95%E7%9B%91%E6%B5%8B%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE">3. 如何监测数组中的数据？</a></li>
-<li><a href="#4%E5%9C%A8vue%E4%BF%AE%E6%94%B9%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%90%E4%B8%AA%E5%85%83%E7%B4%A0%E4%B8%80%E5%AE%9A%E8%A6%81%E7%94%A8%E5%A6%82%E4%B8%8B%E6%96%B9%E6%B3%95">4.在Vue修改数组中的某个元素一定要用如下方法：</a></li>
-</ul>
-</li>
-<li><a href="#%E6%94%B6%E9%9B%86%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE">收集表单数据</a></li>
-<li><a href="#%E8%BF%87%E6%BB%A4%E5%99%A8">过滤器</a></li>
-<li><a href="#%E6%8C%87%E4%BB%A4">指令</a>
-<ul>
-<li><a href="#1v-text">1.v-text</a></li>
-<li><a href="#2v-html">2.v-html</a></li>
-<li><a href="#3v-cloak">3.v-cloak</a></li>
-<li><a href="#4v-once">4.v-once</a></li>
-<li><a href="#5v-pre">5.v-pre</a></li>
-<li><a href="#6%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4">6.自定义指令</a></li>
-</ul>
-</li>
-<li><a href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">生命周期</a></li>
-</ul>
-<h2>初始Vue</h2>
+     vueMarkdown: `
+     <body>
+    <h2>初始Vue</h2>
 <ul>
 <li>想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象；</li>
 <li>root容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法；</li>
@@ -1980,7 +1906,6 @@ Vue.directive(指令名,配置对象) 或   Vue.directive(指令名,回调函数
 <li>生命周期函数中的this指向是vm 或 组件实例对象。</li>
 </ul>
 </blockquote>
-<p><img src="C:%5CUsers%5C%E9%98%BF%E9%91%AB%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20211106164355102.png" alt="image-20211106164355102"></p>
 <p><strong>常用的生命周期钩子</strong>：</p>
 <ul>
 <li><strong>mounted</strong>: 发送ajax请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】。</li>
@@ -1993,14 +1918,15 @@ Vue.directive(指令名,配置对象) 或   Vue.directive(指令名,回调函数
 <li>一般不会在beforeDestroy操作数据，因为即便操作数据，也不会再触发更新流程了。</li>
 </ul>
 
-  `,
+</body>`
+    
     };
   },
 };
 </script>
 
 <style lang="less" scoped>
-.vuebase {
+.vuebasic {
   display: flex;
 }
 .content {

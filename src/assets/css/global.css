@@ -10,7 +10,9 @@ html, body, #app {
   padding: 0;
 } */
 body {
-  background: url(../background/星空.jpg) no-repeat;
+  /* background: url(../gaoqing.jpg) no-repeat; */
+  background: url(../xinkong.jpg) no-repeat;
+  /* background: url(../Headportrait.jpg) no-repeat; */
   /* background-color: #263238; */
   /* 背景图片不随鼠标滚动而滚动 */
   background-attachment: fixed;
