@@ -5,7 +5,7 @@
       <div class="icon">
         <img src="@/assets/logo.png" alt="" />
       </div>
-      <span>Vue</span>
+      <span>点击查看笔记</span>
     </div>
     <!-- 翻面那一层 -->
     <div class="back">
