@@ -2,7 +2,7 @@
   <div class="introduce">
     <!-- 顶部 -->
     <header>
-      <h1 class="me">关于我</h1>
+      <h1 class="me">Liberty</h1>
       <hr />
       <p class="my_sentence">
         如果debugging是一种消灭bug的过程，那编程就一定是把bug放进去的过程。

@@ -103,7 +103,7 @@ export default {
   // 100%仓库高度
   width: 80%;
   margin: 0 auto;
-  height: 100vh;
+  height: 740px;
   overflow: hidden;
   display: flex;
 }
@@ -113,7 +113,8 @@ export default {
 }
 .left-box {
   width: 250px;
-  min-height: 480px;
+  
+  height: 740px;
   // 半透明背景
   background-color: rgba(0, 0, 0, 0.55);
   // 背景模糊（毛玻璃）
@@ -194,9 +195,10 @@ export default {
   position: relative;
   border: 2px solid blue;
   margin: 0px 20px;
+  box-sizing: border-box;
   
   min-width: 730px;
-  min-height: 400px;
+  height: 740px;
 
   .handler {
     width: 10px;

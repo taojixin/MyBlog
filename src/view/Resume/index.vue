@@ -47,7 +47,7 @@
             </div>
           </div>
           <div class="message">
-            <h3>求职意向</h3>
+            <h3>实习意向</h3>
             <ul>
               <li><span>从事职业</span>：web前端开发</li>
               <li><span>期望薪资</span>：2.5K~5K</li>
