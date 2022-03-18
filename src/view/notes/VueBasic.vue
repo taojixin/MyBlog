@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import '@/assets/css/markdown.css'
 export default {
   data() {
     return {
@@ -1928,6 +1927,8 @@ Vue.directive(指令名,配置对象) 或   Vue.directive(指令名,回调函数
 <style lang="less" scoped>
 .vuebasic {
   display: flex;
+  width: 80%;
+  margin: 0 auto;
 }
 .content {
   ul {

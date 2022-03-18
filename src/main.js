@@ -9,6 +9,8 @@ import './assets/fonts/iconfont.css'
 // import '@/view/other/fonts/font.css'
 // 导入全局样式表
 import './assets/css/global.css'
+// 导入笔记样式
+import '@/assets/css/markdown.css'
 
 
 

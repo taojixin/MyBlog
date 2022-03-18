@@ -1,36 +1,46 @@
 <template>
   <div class="card-one">
     <div class="content">
-      <h2>01</h2>
-      <h3>Card One</h3>
+      <h2>{{message.index}}</h2>
+      <h3>{{message.title}}</h3>
       <p>
-        Realistic glass card hover effect, realistic glass card hover effect,
-        realistic glass card hover effect.
+        {{message.about}}
+        <!-- Realistic glass card hover effect, realistic glass card hover effect,
+        realistic glass card hover effect. -->
       </p>
-      <a href="#">Read More</a>
+      <a href="#" @click="jump()">Read More</a>
     </div>
     <div class="show">
-      <h1>Vue基础</h1>
+      <h1>{{message.title}}</h1>
     </div>
   </div>
 </template>
 
 <script>
 // // vanilla-tilt.js是一个平滑的3D倾斜JS库，具体参数配置查文档
-import VanillaTilt from 'vanilla-tilt';
+import VanillaTilt from "vanilla-tilt";
 export default {
   mounted() {
-    this.threeD()
+    this.threeD();
   },
   methods: {
     // 3D效果
     threeD() {
-      VanillaTilt.init(document.querySelectorAll(".card-one"),{
-            max: 8,  //最大倾斜度数
-            speed: 400,  //倾斜转换的速度
-            glare: true,  //是否开启眩光效果
-            "max-glare": .2 //最大眩光的不透明度
-        })
+      VanillaTilt.init(document.querySelectorAll(".card-one"), {
+        max: 8, //最大倾斜度数
+        speed: 400, //倾斜转换的速度
+        glare: true, //是否开启眩光效果
+        "max-glare": 0.2, //最大眩光的不透明度
+      });
+    },
+    // 跳转
+    jump() {
+      this.$router.push(`/${this.message.path}`);
+    }
+  },
+  props: {
+    message: {
+      type: Object
     }
   }
 };
@@ -68,7 +78,7 @@ h1 {
     text-align: center;
     transform: translateY(100px);
     opacity: 0;
-    transition: .5s;
+    transition: 0.3s;
 
     h2 {
       position: absolute;
@@ -95,12 +105,12 @@ h1 {
       display: inline-block;
       padding: 8px 20px;
       margin-top: 15px;
-      background-color: rgba(26, 52, 128, .4);
+      background-color: rgba(26, 52, 128, 0.4);
       color: rgba(255, 255, 255, 0.6);
       text-decoration: none;
       border-radius: 20px;
       font-weight: 500;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
   }
 
@@ -113,7 +123,7 @@ h1 {
     // transform: translateY(50%);
     opacity: 1;
     color: rgba(255, 255, 255, 0.4);
-    transition: .3s;
+    transition: 0.3s;
 
     h1 {
       text-align: center;
@@ -127,7 +137,7 @@ h1 {
 
   &:hover .show {
     opacity: 0;
-      transform: translateY(110px);
+    transform: translateY(110px);
   }
 }
 </style>
