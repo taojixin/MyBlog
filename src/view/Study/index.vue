@@ -6,6 +6,8 @@
     <CardOne></CardOne>
     <CardOne></CardOne>
     <CardOne></CardOne>
+    <CardOne></CardOne>
+    <CardOne></CardOne>
 
   </div>
 </template>
@@ -21,5 +23,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+.study {
+  max-height: 740px;
+  overflow-y: scroll;
+}
 </style>

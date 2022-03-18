@@ -14,6 +14,7 @@
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "markdown-it": "^12.3.2",
+    "vanilla-tilt": "^1.7.2",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
