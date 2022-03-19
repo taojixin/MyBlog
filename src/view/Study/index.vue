@@ -25,6 +25,24 @@ export default {
           title: "Vue基础",
           about: "主要包括vue的初始化、指令、生命周期等知识点。",
           path: "vuebasic",
+        },
+        {
+          index: '02',
+          title: 'Git基本使用',
+          about: '主要包含git的初始化、git常用命令、分支操作、远程仓库操作等。',
+          path: 'gitbasic'
+        },
+        {
+          index: '03',
+          title: 'jQuery基本用法',
+          about: '主要包含jQuery选择器、样式操作、元素操作等。',
+          path: 'jquery'
+        },
+        {
+          index: '04',
+          title: 'CSS',
+          about: '主要包括css常用样式，如字体、选择器、css三大特性。',
+          path: 'css'
         }
       ]
     }

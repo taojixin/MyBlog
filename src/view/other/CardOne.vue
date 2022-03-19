@@ -8,7 +8,8 @@
         <!-- Realistic glass card hover effect, realistic glass card hover effect,
         realistic glass card hover effect. -->
       </p>
-      <a href="#" @click="jump()">Read More</a>
+      <!-- <a href="#" @click="jump()">Read More</a> -->
+      <router-link class="link" target="_blank" :to="'/'+message.path">Read More</router-link>
     </div>
     <div class="show">
       <h1>{{message.title}}</h1>
@@ -72,6 +73,7 @@ h1 {
   border-top: 1px solid rgba(255, 255, 255, 0.5);
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   margin-top: 40px;
+  margin-bottom: 40px;
 
   .content {
     padding: 20px;
@@ -100,7 +102,7 @@ h1 {
       margin: 30px 0 15px 0;
     }
 
-    a {
+    .link {
       position: relative;
       display: inline-block;
       padding: 8px 20px;
@@ -116,10 +118,10 @@ h1 {
 
   .show {
     position: absolute;
-    top: 41%;
-    left: 35%;
+    top: 50%;
+    left: 50%;
 
-    transform: translateX(50%);
+    transform: translate(-50%, -50%);
     // transform: translateY(50%);
     opacity: 1;
     color: rgba(255, 255, 255, 0.4);

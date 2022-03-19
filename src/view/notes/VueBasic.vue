@@ -9,7 +9,6 @@ export default {
   data() {
     return {
      vueMarkdown: `
-     <body>
     <h2>初始Vue</h2>
 <ul>
 <li>想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象；</li>
@@ -1916,10 +1915,8 @@ Vue.directive(指令名,配置对象) 或   Vue.directive(指令名,回调函数
 <li>销毁后自定义事件会失效，但原生DOM事件依然有效。</li>
 <li>一般不会在beforeDestroy操作数据，因为即便操作数据，也不会再触发更新流程了。</li>
 </ul>
-
-</body>`
-    
-    };
+`
+    }
   },
 };
 </script>
@@ -1927,7 +1924,7 @@ Vue.directive(指令名,配置对象) 或   Vue.directive(指令名,回调函数
 <style lang="less" scoped>
 .vuebasic {
   display: flex;
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
 }
 .content {

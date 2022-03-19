@@ -14,6 +14,9 @@ const Contact = () => import('@/view/Contact')
 
 // 笔记
 const VueBasic = () => import('@/view/notes/VueBasic')
+const GitBasic = () => import('@/view/notes/GitBasic')
+const jQuery = () => import('@/view/notes/jQuery')
+const Css = () => import('@/view/notes/Css')
 
 
 Vue.use(VueRouter)
@@ -38,6 +41,9 @@ const routes = [
 
   },
   { path: '/vuebasic', component: VueBasic },
+  { path: '/gitbasic', component: GitBasic },
+  { path: '/jquery', component: jQuery },
+  { path: '/css', component: Css },
   // {
   //   path: '/home', component: Home, children: [
   //     { path: '/introduce', component: introduce },
