@@ -34,22 +34,25 @@
 </template>
 
 <script>
+import {reqDirectory} from '@/api/index'
 export default {
   created() {
     // vue浏览器刷新跳转指定页面
     // if(this.$router.path !== '/sidenav') {
     //   this.$router.replace('/sidenav')
     // }
+    // 发起请求
+    this.getDirectory()
   },
   data() {
     return {
       // 目录项
       directory: [
-        { path: "introduce", class: "iconfont icon-user", text: "自我介绍" },
-        { path: "resume", class: "iconfont icon-namecard", text: "简历" },
-        { path: "demo", class: "iconfont icon-form-fill", text: "练习项目" },
-        { path: "study", class: "iconfont icon-suggest", text: "学习过程" },
-        { path: "blog", class: "iconfont icon-3column", text: "博客介绍" },
+        // { path: "introduce", class: "iconfont icon-user", text: "自我介绍" },
+        // { path: "resume", class: "iconfont icon-namecard", text: "简历" },
+        // { path: "demo", class: "iconfont icon-form-fill", text: "练习项目" },
+        // { path: "study", class: "iconfont icon-suggest", text: "学习过程" },
+        // { path: "blog", class: "iconfont icon-3column", text: "博客介绍" },
         // { path: "contact", class: "iconfont icon-lianjie", text: "联系" },
       ],
     };
@@ -58,6 +61,11 @@ export default {
     // 跳转的函数
     jump(path) {
       this.$router.push(`/${path}`);
+    },
+    // 请求获取directory数据
+    async getDirectory() {
+      const data = await reqDirectory();
+      this.directory = data;
     },
     // 侧边栏的显示与隐藏
     showNav() {
