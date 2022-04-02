@@ -59,13 +59,13 @@ h1 {
   width: 800px;
   height: 200px;
   // 半透明背景
-  background-color: rgba(10, 23, 77, 0.35);
+  background-color: rgba(75, 103, 214, 0.15);
   // 背景模糊（毛玻璃）
   backdrop-filter: blur(50px);
   margin: 0 auto;
   border-radius: 10px;
   /* 阴影 */
-  box-shadow: 10px 10px 15px rgba(30, 57, 208, 0.5);
+  box-shadow: 10px 10px 15px rgba(64, 67, 81, 0.5);
   overflow: hidden;
   flex: flex;
   justify-content: center;

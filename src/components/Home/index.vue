@@ -30,6 +30,7 @@
       <router-view></router-view>
       <div class="handler"></div>
     </div>
+    <div class="bottom"><a href="https://beian.miit.gov.cn" target="_blank">蜀ICP备2022007017号-1</a></div>
   </div>
 </template>
 
@@ -42,18 +43,18 @@ export default {
     //   this.$router.replace('/sidenav')
     // }
     // 发起请求
-    this.getDirectory()
+    // this.getDirectory()
   },
   data() {
     return {
       // 目录项
       directory: [
-        // { path: "introduce", class: "iconfont icon-user", text: "自我介绍" },
-        // { path: "resume", class: "iconfont icon-namecard", text: "简历" },
-        // { path: "demo", class: "iconfont icon-form-fill", text: "练习项目" },
-        // { path: "study", class: "iconfont icon-suggest", text: "学习过程" },
-        // { path: "blog", class: "iconfont icon-3column", text: "博客介绍" },
-        // { path: "contact", class: "iconfont icon-lianjie", text: "联系" },
+        { path: "introduce", class: "iconfont icon-user", text: "自我介绍" },
+        { path: "resume", class: "iconfont icon-namecard", text: "简历" },
+        { path: "demo", class: "iconfont icon-form-fill", text: "练习项目" },
+        { path: "study", class: "iconfont icon-suggest", text: "学习过程" },
+        { path: "blog", class: "iconfont icon-3column", text: "博客介绍" },
+        { path: "contact", class: "iconfont icon-lianjie", text: "联系" },
       ],
     };
   },
@@ -108,10 +109,12 @@ export default {
 
 <style lang="less" scoped>
 .sidenav {
+  position: relative;
   // 100%仓库高度
   width: 80%;
   margin: 0 auto;
   height: 740px;
+  padding-top: 6px;
   overflow: hidden;
   display: flex;
 }
@@ -122,11 +125,12 @@ export default {
 .left-box {
   width: 250px;
   
-  height: 740px;
+  height: 720px;
   // 半透明背景
-  background-color: rgba(0, 0, 0, 0.55);
+  background-color: rgba(95, 150, 190, .3);
+  // background-color: #2f90b9;
   // 背景模糊（毛玻璃）
-  backdrop-filter: blur(30px);
+  // backdrop-filter: blur(30px);
   position: relative;
   color: #fff;
   font-size: 14px;
@@ -137,6 +141,8 @@ export default {
   transition: 0.5s ease;
   // 不让文字换行
   white-space: nowrap;
+  // 圆角边框
+  border-radius: 10px;
 
   ul {
     width: 90%;
@@ -157,10 +163,10 @@ export default {
 
       &.active,
       &.active:hover {
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.4);
       }
       &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.2);
       }
 
       .iconfont {
@@ -201,12 +207,12 @@ export default {
 .right-box {
   flex: 1;
   position: relative;
-  border: 2px solid blue;
+  // border: 2px solid blue;
   margin: 0px 20px;
   box-sizing: border-box;
   
   min-width: 730px;
-  height: 740px;
+  height: 720px;
 
   .handler {
     width: 10px;
@@ -223,7 +229,7 @@ export default {
     &::before,
     &::after {
       content: "";
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba(255, 255, 255, 0.9);
       position: absolute;
       left: 0;
       width: 100%;
@@ -252,6 +258,16 @@ export default {
 
   &:hover .handler {
     opacity: 1;
+  }
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  a {
+    color: #5796e3;
   }
 }
 </style>

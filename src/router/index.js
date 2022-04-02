@@ -5,7 +5,8 @@ import VueRouter from 'vue-router'
 const Home = () => import('@/components/Home')
 
 // 侧边栏导航
-const introduce = () => import('@/view/Introduce')
+const About = () => import('@/view/About')
+const Introduce = () => import('@/view/Introduce')
 const Resume = () => import('@/view/Resume')
 const Demo = () => import('@/view/Demo')
 const Study = () => import('@/view/Study')
@@ -25,8 +26,9 @@ const routes = [
   { path: '/', redirect: '/Home', },
   {
     path: '/home', component: Home, children: [
-      { path: '/', redirect: '/introduce' },
-      { path: '/introduce', component: introduce },
+      { path: '/', redirect: '/about' },
+      { path: '/about', component: About },
+      { path: '/introduce', component: Introduce },
       { path: '/resume', component: Resume },
       { path: '/demo', component: Demo },
       {

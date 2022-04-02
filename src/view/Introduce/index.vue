@@ -52,9 +52,9 @@ export default {
   width: 100%;
   height: 100%;
   // 半透明背景
-  background-color: rgba(0, 0, 0, 0.55);
+  // background-color: rgba(100, 166, 197, 0.8);
   // 背景模糊（毛玻璃）
-  backdrop-filter: blur(20px);
+  // backdrop-filter: blur(20px);
   display: flex;
   flex-direction: column;
 }
@@ -62,11 +62,12 @@ header {
   flex: 1;
 
   .me {
-    color: #0f3d93;
+    color: #eff0f2;
     margin: 0;
+    padding-top: 20px;
     text-align: center;
     /* 自定义属性--c，可通过var函数对其调用 */
-    --c: #083588;
+    --c: #84a7ec;
     /* 调用自定义属性--c，设置文字阴影（发光效果） */
     text-shadow: 0 0 10px var(--c), 0 0 20px var(--c), 0 0 40px var(--c),
       0 0 80px var(--c), 0 0 160px var(--c);
@@ -83,12 +84,12 @@ header {
   }
   hr {
     width: 90%;
-    margin: 20px auto;
+    margin: 10px auto;
     border: none;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
   }
   .my_sentence {
-    color: #093b99;
+    color: #8fa8d5;
     text-align: center;
     margin: 5px auto;
   }
