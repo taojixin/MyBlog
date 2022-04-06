@@ -18,7 +18,6 @@ export default {
   methods: {
     async getNotes() {
       const data = await reqCssBasic();
-      // console.log(data);
       this.cssMarkdown = data
     }
   }

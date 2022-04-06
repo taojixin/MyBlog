@@ -13,7 +13,7 @@ import './assets/css/global.css'
 import '@/assets/css/markdown.css'
 // 导入axios
 import axios from 'axios'
-axios.defaults.baseURL = 'http://127.0.0.1:8881/'
+// axios.defaults.baseURL = 'http://120.79.177.24:8881'
 // 将axios挂载到vue的原型对象上.这样vue的每一个组件都可以通过this直接访问到$http从而发起axios请求
 Vue.prototype.$http = axios
 
