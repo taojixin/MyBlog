@@ -10,7 +10,7 @@ const Introduce = () => import('@/view/Introduce')
 const Resume = () => import('@/view/Resume')
 const Demo = () => import('@/view/Demo')
 const Study = () => import('@/view/Study')
-const Blog = () => import('@/view/Blog')
+const Note = () => import('@/view/Note')
 const Contact = () => import('@/view/Contact')
 
 // 笔记
@@ -37,7 +37,7 @@ const routes = [
           // { path: '/vuebasic', name: 'VueBasic', component: VueBasic },
         ]
       },
-      { path: '/blog', component: Blog },
+      { path: '/note', component: Note },
       { path: '/contact', component: Contact },
     ],
 

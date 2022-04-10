@@ -17,11 +17,16 @@ const reqJqueryBasic = () => {
   return requests({url: '/notes/jquerybasic', method: 'get'})
 }
 
+const reqText = () => {
+  return requests({url: '/notes/gitbasic', method: 'get'})
+}
+
 
 export {
   reqDirectory,
   reqCssBasic,
   reqVueBasic,
   reqGitBasic,
-  reqJqueryBasic
+  reqJqueryBasic,
+  reqText
 }

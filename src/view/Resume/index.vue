@@ -1,124 +1,140 @@
 <template>
   <div class="resume">
-    <!-- 左侧 -->
-    <div class="left">
-      <div class="left_top">
-        <div class="spot">
-          <img src="@/assets/Headportrait.jpg" alt="" />
-        </div>
-      </div>
-      <div class="left_bottom">
-        <!-- 标题 -->
-        <div class="title">
-          <h1>个人简历</h1>
-          <p>--CURRICULUM VITAE--</p>
-        </div>
-        <!-- 个人信息 -->
-        <div class="information">
-          <div class="top">
-            <div class="border">
-              <i class="iconfont icon-icon"></i>
-            </div>
-          </div>
-          <div class="message">
-            <h3>个人信息</h3>
-            <ul>
-              <li>
-                <span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span>：陶继鑫
-              </li>
-              <li>
-                <span>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</span
-                >：18581766104
-              </li>
-              <li><span>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄</span>：20</li>
-              <li>
-                <span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</span
-                >：四川省成都市郫都区
-              </li>
-              <li><span>工作经验</span>：暂无</li>
-            </ul>
-          </div>
-        </div>
-        <!-- 求职意向 -->
-        <div class="jobs">
-          <div class="top">
-            <div class="border">
-              <i class="iconfont icon-browse"></i>
-            </div>
-          </div>
-          <div class="message">
-            <h3>实习意向</h3>
-            <ul>
-              <li><span>从事职业</span>：web前端开发</li>
-              <li><span>期望薪资</span>：2.5K~5K</li>
-            </ul>
-          </div>
-        </div>
-        <!-- 教育背景 -->
-        <div class="education">
-          <div class="top">
-            <div class="border">
-              <i class="iconfont icon-jiaoyubeijing"></i>
-            </div>
-          </div>
-          <div class="message">
-            <h3>教育背景</h3>
-            <ul>
-              <li><span>学校名称</span>：四川工商学院</li>
-              <li><span>就读时间</span>：2020.07~2024.06</li>
-              <li><span>所学专业</span>：软件工程</li>
-              <li><span>学历学位</span>：本科</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <div class="bread">
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/About' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item>简历</el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
-    <!-- 右侧 -->
-    <div class="right">
-      <!-- 专业技能 -->
-      <div class="expertise">
-        <h4>专业技能</h4>
-        <hr />
-        <ul>
-          <li>熟悉html、css、JavaScript基础知识，了解html5&css3；</li>
-          <li>熟悉Ajax请求数据以及对axios的使用；</li>
-          <li>熟悉es6新特性，能够模块化开发项目；</li>
-          <li>掌握vue全家桶，能够使用vue全家桶构建项目；</li>
-          <li>掌握node.js，能够编写登录注册等简单接口；</li>
-          <li>了解JavaScript高级语法；</li>
-          <li>了解移动端开发；</li>
-        </ul>
+    <div class="box">
+      <!-- 左侧 -->
+      <div class="left">
+        <div class="left_top">
+          <div class="spot">
+            <img src="@/assets/Headportrait.jpg" alt="" />
+          </div>
+        </div>
+        <div class="left_bottom">
+          <!-- 标题 -->
+          <div class="title">
+            <h1>个人简历</h1>
+            <p>--CURRICULUM VITAE--</p>
+          </div>
+          <!-- 个人信息 -->
+          <div class="information">
+            <div class="top">
+              <div class="border">
+                <i class="iconfont icon-icon"></i>
+              </div>
+            </div>
+            <div class="message">
+              <h3>个人信息</h3>
+              <ul>
+                <li>
+                  <span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span>：陶继鑫
+                </li>
+                <li>
+                  <span>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</span
+                  >：18581766104
+                </li>
+                <li>
+                  <span>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄</span>：20
+                </li>
+                <li>
+                  <span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</span
+                  >：四川省成都市郫都区
+                </li>
+                <li><span>工作经验</span>：暂无</li>
+              </ul>
+            </div>
+          </div>
+          <!-- 求职意向 -->
+          <div class="jobs">
+            <div class="top">
+              <div class="border">
+                <i class="iconfont icon-browse"></i>
+              </div>
+            </div>
+            <div class="message">
+              <h3>实习意向</h3>
+              <ul>
+                <li><span>从事职业</span>：web前端开发</li>
+                <li><span>期望薪资</span>：2.5K~5K</li>
+              </ul>
+            </div>
+          </div>
+          <!-- 教育背景 -->
+          <div class="education">
+            <div class="top">
+              <div class="border">
+                <i class="iconfont icon-jiaoyubeijing"></i>
+              </div>
+            </div>
+            <div class="message">
+              <h3>教育背景</h3>
+              <ul>
+                <li><span>学校名称</span>：四川工商学院</li>
+                <li><span>就读时间</span>：2020.07~2024.06</li>
+                <li><span>所学专业</span>：软件工程</li>
+                <li><span>学历学位</span>：本科</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- 项目经验 -->
-      <div class="project">
-        <h4>项目经验</h4>
-        <hr />
-        <h5>1.电商后台管理系统</h5>
-        <ul>
-          <li>通过vue构建项目模块化开发；</li>
-          <li>使用Element-ui快速进行布局；</li>
-          <li>使用axios访问后台数据；</li>
-          <li>通过git管理代码并上传到远程仓库；</li>
-        </ul>
-        <h5 class="second">2.个人博客</h5>
-        <ul>
-          <li>使用vue构建项目模块化开发；</li>
-          <li>通过vue组件化开发，封装了自己的组件库；</li>
-          <li>通过vuex管理状态以及存储信息；</li>
-          <li>通过nginx代理服务器远程部署项目；</li>
-          <li>访问地址<a href="http://120.79.177.24" target="_black">http://120.79.177.24</a>；</li>
-        </ul>
-      </div>
-      <!-- 自我评价 -->
-      <div class="assessment">
-        <h4>自我评价</h4>
-        <hr />
-        <ul>
-          <li>有较强的自制力，主动学习新技能，热爱技术，提升自我；</li>
-          <li>踏实认真，有良好的学习协调能力和规划能力；</li>
-          <li>善于独立思考，有良好的接受能力与学习能力，以及遇到问题的解决能力；</li>
-          <li>缺少实际工作经验，不了解具体工作流程；</li>
-        </ul>
+      <!-- 右侧 -->
+      <div class="right">
+        <!-- 专业技能 -->
+        <div class="expertise">
+          <h4>专业技能</h4>
+          <hr />
+          <ul>
+            <li>熟悉html、css、JavaScript基础知识，了解html5&css3；</li>
+            <li>熟悉Ajax请求数据以及对axios的使用；</li>
+            <li>熟悉es6新特性，能够模块化开发项目；</li>
+            <li>掌握vue全家桶，能够使用vue全家桶构建项目；</li>
+            <li>掌握node.js，能够编写登录注册等简单接口；</li>
+            <li>了解JavaScript高级语法；</li>
+            <li>了解移动端开发；</li>
+          </ul>
+        </div>
+        <!-- 项目经验 -->
+        <div class="project">
+          <h4>项目经验</h4>
+          <hr />
+          <h5>1.电商后台管理系统</h5>
+          <ul>
+            <li>通过vue构建项目模块化开发；</li>
+            <li>使用Element-ui快速进行布局；</li>
+            <li>使用axios访问后台数据；</li>
+            <li>通过git管理代码并上传到远程仓库；</li>
+          </ul>
+          <h5 class="second">2.个人博客</h5>
+          <ul>
+            <li>使用vue构建项目模块化开发；</li>
+            <li>通过vue组件化开发，封装了自己的组件库；</li>
+            <li>通过vuex管理状态以及存储信息；</li>
+            <li>通过nginx代理服务器远程部署项目；</li>
+            <li>
+              访问地址<a href="http://120.79.177.24" target="_black"
+                >http://120.79.177.24</a
+              >；
+            </li>
+          </ul>
+        </div>
+        <!-- 自我评价 -->
+        <div class="assessment">
+          <h4>自我评价</h4>
+          <hr />
+          <ul>
+            <li>有较强的自制力，主动学习新技能，热爱技术，提升自我；</li>
+            <li>踏实认真，有良好的学习协调能力和规划能力；</li>
+            <li>
+              善于独立思考，有良好的接受能力与学习能力，以及遇到问题的解决能力；
+            </li>
+            <li>缺少实际工作经验，不了解具体工作流程；</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
@@ -130,16 +146,24 @@ export default {};
 
 <style lang="less" scoped>
 .resume {
+  position: relative;
+  .bread {
+    position: absolute;
+  }
+}
+
+.box {
   display: block;
   margin: 5px auto;
-  width: 750px;
+  width: 730px;
   height: 740px;
   background: #e6e6e6;
+  box-sizing: border-box;
 
   // 左侧
   .left {
     margin: 20px 0;
-    width: 250px;
+    width: 240px;
     height: 700px;
     overflow: hidden;
     float: left;
@@ -322,11 +346,12 @@ export default {};
   .right {
     float: right;
     margin: 20px 0;
-    width: 500px;
+    width: 490px;
     height: 700px;
     box-sizing: border-box;
 
-    h4,h5 {
+    h4,
+    h5 {
       margin: 0;
     }
     hr {
@@ -357,7 +382,6 @@ export default {};
         margin: 5px;
         font-size: 15px;
         text-indent: 20px;
-
       }
       .second {
         margin-top: 10px;

@@ -1,4 +1,6 @@
 import Vue from 'vue'
+// 引入样式，否则没有样式
+import 'element-ui/lib/theme-chalk/index.css'
 
 import {
   Button,
@@ -6,10 +8,15 @@ import {
   MenuItem,
   MenuItemGroup,
   Submenu,
-  Main
+  Main,
+  Breadcrumb,
+  BreadcrumbItem
 } from 'element-ui'
 
 // 全局注册
+Vue.use(Breadcrumb)
+Vue.use(BreadcrumbItem)
+
 Vue.use(Main)
 Vue.use(Submenu)
 Vue.use(MenuItemGroup)

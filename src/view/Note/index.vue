@@ -1,17 +1,14 @@
 <template>
-  <div class="demo">
+  <div class="blogintroduce">
     <el-breadcrumb  separator="/">
       <el-breadcrumb-item :to="{path:'/About'}">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>练习项目</el-breadcrumb-item>
+      <el-breadcrumb-item>留言</el-breadcrumb-item>
     </el-breadcrumb>
-    <Tag></Tag>
   </div>
 </template>
 
 <script>
-import Tag from '@/view/other/Tag'
 export default {
-  components: { Tag },
 
 }
 </script>

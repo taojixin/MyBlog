@@ -1,13 +1,10 @@
 <template>
   <div class="study">
-    <!-- <router-link to="VueBasic">VueBasic</router-link> -->
-    <!-- <router-view></router-view> -->
-    <!-- <Card></Card> -->
+    <el-breadcrumb  separator="/">
+      <el-breadcrumb-item :to="{path:'/About'}">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>笔记</el-breadcrumb-item>
+    </el-breadcrumb>
     <CardOne v-for="item in content" :key="item.index" :message="item"></CardOne>
-    <!-- <CardOne></CardOne>
-    <CardOne></CardOne>
-    <CardOne></CardOne>
-    <CardOne></CardOne> -->
 
   </div>
 </template>

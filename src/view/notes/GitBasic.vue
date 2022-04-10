@@ -19,7 +19,6 @@ export default {
     async getNotes() {
       const data = await reqGitBasic();
       this.vueMarkdown = data
-      console.log(data);
     }
   }
 }
