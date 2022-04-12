@@ -212,7 +212,7 @@ export default {
   box-sizing: border-box;
   
   min-width: 730px;
-  height: 720px;
+  // height: 720px;
   padding: 20px;
 
   .handler {

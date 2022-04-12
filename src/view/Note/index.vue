@@ -9,33 +9,89 @@
     <form class="panel">
       <h2><span>欢迎留言</span></h2>
       <label for="name" class="label_name">请输入昵称：</label>
-      <input type="text" placeholder="请输入昵称" id="name" autocomplete="off" />
+      <input
+        type="text"
+        placeholder="请输入昵称"
+        id="name"
+        autocomplete="off"
+      />
       <label for="note" class="label_note">留言：</label>
       <textarea class="textarea" id="note" placeholder="你的留言"></textarea>
       <input type="submit" id="submit" value="提   交" />
     </form>
     <!-- 留言展示区域 -->
-    <div class="message">
-      <h5>是否</h5>
-      <i class="date iconfont icon-24gl-calendar"> 2022.4.12</i>
-      <p>发射点发吉林省地方对双fdas的说法发吉林省地方对双fdas的说法的撒反对发吉林省地方对双fdas的说法的撒反对发吉林省地方对双fdas的说法的撒反对发吉林省地方对双fdas的说法的撒反对发吉林省地方对双fdas的说法的撒反对发吉林省地方对双fdas的说法的撒反对发吉林省地方对双fdas的说法的撒反对发吉林省地方对双fdas的说法的撒反对发吉林省地方对双fdas的说法的撒反对发吉林省地方对双fdas的说法的撒反对的撒反对的说法的萨芬的萨芬的萨芬犯得上广泛的离开过几个老师地方各级领导凡是看过附近的苏格兰积分多少方来说绝对法律上</p>
-      <i class="good iconfont icon-icon1"></i>
+    <div class="message" v-for="item in comments" :key="item.id">
+      <h5>{{ item.name }}：</h5>
+      <i class="date iconfont icon-24gl-calendar"> {{ item.time }}</i>
+      <p>{{ item.message }}</p>
+      <i class="good iconfont icon-icon1" @click="giveALike(item.id)"></i>
+      <span class="count">({{ item.good }})</span>
     </div>
-    <div class="message">
-      <h5>是否</h5>
-      <i class="date iconfont icon-24gl-calendar"> 2022.4.12</i>
-      <p>发射点发吉林省地方对双方来说绝对法律上</p>
-      <i class="good iconfont icon-icon1"></i>
-    </div>
-    
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      comments: [
+        {
+          id: 0,
+          name: "徐干",
+          time: "2022.4.12",
+          good: 5,
+          message: "高殿郁崇崇，广厦凄泠泠。微风起闺闼，落日照阶庭。踟躇云屋下，啸歌倚华楹。君行殊不返，我饰为谁容。炉薰阖不用，镜匣上尘生。绮罗失常色，金翠暗无精。嘉肴既忘御，旨酒亦常停。顾瞻空寂寂，唯闻燕雀声。忧思连相属，中心如宿醒。",
+        },
+        {
+          id: 1,
+          name: "欧阳修",
+          time: "2022.4.12",
+          good: 6,
+          message:
+            "月波清霁，烟容明淡，灵汉旧期还至。鹊迎桥路据天津，映夹岸、星榆点缀。云屏未卷，仙鸡催晓，肠断去年情味。多应天意不教长，恐恁把、欢娱容易。",
+        },
+        {
+          id: 2,
+          name: "庚肩吾",
+          time: "2022.4.12",
+          good: 6,
+          message:
+            "古人谩歌西飞燕，十年不见狂夫面。三更风作切梦刀，万转愁成系肠线。所嗟不及牛女星，一年一度得相见。",
+        },
+        {
+          id: 3,
+          name: "白居易",
+          time: "2022.4.12",
+          good: 5,
+          message: "烟霄微月澹长空，银汉秋期万古同。七月七日长生殿，夜半无人私语时，天长地久有时尽，此恨绵绵无绝期",
+        },
+        {
+          id: 4,
+          name: "朱淑真",
+          time: "2022.4.12",
+          good: 5,
+          message: "连理枝头花正开，妒花风雨便相催。愿教青帝常为主，莫遣纷纷点翠苔。",
+        },
+      ],
+    };
+  },
+  methods: {
+    // 点赞
+    giveALike(id) {
+      this.comments[id].good++;
+      const good = document.getElementsByClassName("good")[id];
+      good.style.color = "#2387f2";
+    },
+  },
+};
 </script>
 
 <style lang="less">
+.note {
+  // 超出部分 滚动
+  overflow-y: scroll;
+  max-height: 700px;
+}
 .panel {
   // border: 1px solid black;
   position: relative;
@@ -73,7 +129,8 @@ export default {};
   .label_note {
     top: 170px;
   }
-  #name, #note {
+  #name,
+  #note {
     border-radius: 10px;
     border: 3px solid rgb(128, 128, 189);
     box-shadow: 2px 3px 4px rgb(144, 144, 183);
@@ -115,13 +172,12 @@ export default {};
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    transition: all .5s;
+    transition: all 0.5s;
     color: #6b9bce;
     font-weight: 700;
     &:hover {
       background-color: #c2d0e2;
     }
-
   }
 }
 
@@ -134,7 +190,7 @@ export default {};
   position: relative;
   padding: 10px;
   box-sizing: border-box;
-  transition: border .5s;
+  transition: border 0.5s;
   &:hover {
     border: 2px dashed #2387f2;
     cursor: pointer;
@@ -154,15 +210,22 @@ export default {};
   }
   .good {
     position: absolute;
-    top: 60px;
-    right: 30px;
-    font-size: 18px;
-    transition: all .4;
+    top: 10px;
+    right: 40px;
+    font-size: 30px;
+    transition: all 0.4;
     &:hover {
-      font-size: 20px;
+      font-size: 40px;
       font-weight: bold;
       color: #2387f2;
     }
+  }
+  .count {
+    position: absolute;
+    top: 15px;
+    right: 8px;
+    font-size: 18px;
+    color: gray;
   }
 }
 </style>
