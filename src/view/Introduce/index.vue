@@ -2,7 +2,7 @@
   <div class="introduce">
     <el-breadcrumb  separator="/">
       <el-breadcrumb-item :to="{path:'/About'}">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>博客介绍</el-breadcrumb-item>
+      <el-breadcrumb-item>自我介绍</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 顶部 -->
     <header>

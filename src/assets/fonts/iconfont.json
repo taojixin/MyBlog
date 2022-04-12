@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "777843",
+      "name": "赞",
+      "font_class": "icon1",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "7596925",
+      "name": "24gl-calendar",
+      "font_class": "24gl-calendar",
+      "unicode": "eb3f",
+      "unicode_decimal": 60223
+    },
+    {
       "icon_id": "761302",
       "name": "个人信息",
       "font_class": "icon",
