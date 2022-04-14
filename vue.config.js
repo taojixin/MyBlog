@@ -1,3 +1,4 @@
+// var webpack=require('webpack')
 module.exports = {
   // 代理跨域
   devServer: {
@@ -8,5 +9,14 @@ module.exports = {
     }
   },
   // 打包不生成map文件
-  productionSourceMap: false
+  productionSourceMap: false,
+  // 引入第三方DNS资源
+  configureWebpack: {
+    externals: {
+      'vue': 'Vue',
+      'vue-router': 'VueRouter',
+      'vuex': 'Vuex',
+      'axiox': 'axios'
+    }
+  }
 }
