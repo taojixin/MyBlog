@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+// 全局变量
+
 // element-ui组件库
 import './plugins/element.js'
 // 导入字体图标

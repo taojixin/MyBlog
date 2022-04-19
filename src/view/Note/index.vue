@@ -6,7 +6,8 @@
       <el-breadcrumb-item>留言</el-breadcrumb-item>
     </el-breadcrumb>
     <!-- 留言区域 -->
-    <form class="panel">
+    <!-- <form class="panel" id="form_note" name="myForm" method="post" action="http://localhost:8881/api/comment/create"> -->
+    <div class="panel" >
       <h2><span>欢迎留言</span></h2>
       <label for="name" class="label_name">请输入昵称：</label>
       <input
@@ -14,11 +15,13 @@
         placeholder="请输入昵称"
         id="name"
         autocomplete="off"
+        v-model="name"
       />
       <label for="note" class="label_note">留言：</label>
-      <textarea class="textarea" id="note" placeholder="你的留言"></textarea>
-      <input type="submit" id="submit" value="提   交" />
-    </form>
+      <textarea class="textarea" id="note" placeholder="你的留言" v-model="note"></textarea>
+      <button  id="submit" @click="submit">提   交</button>
+      <!-- <input type="submit" id="submit" value="提   交" /> -->
+    </div>
     <!-- 留言展示区域 -->
     <div class="message" v-for="item in comments" :key="item.id">
       <h5>{{ item.name }}：</h5>
@@ -31,6 +34,8 @@
 </template>
 
 <script>
+import requests from "@/api/request";
+import {formatTime} from '@/utils'
 export default {
   data() {
     return {
@@ -73,6 +78,9 @@ export default {
           message: "连理枝头花正开，妒花风雨便相催。愿教青帝常为主，莫遣纷纷点翠苔。",
         },
       ],
+      name: '',
+      note: '',
+
     };
   },
   methods: {
@@ -82,6 +90,23 @@ export default {
       const good = document.getElementsByClassName("good")[id];
       good.style.color = "#2387f2";
     },
+    // 提交评论信息
+    submit() {
+      // 获取系统当前时间
+      const nowTime = formatTime()
+      requests.post('/comment/create', {
+        name: this.name,
+        createTime: nowTime,
+        note: this.note,
+      }).then(res => {
+        console.log("发表成功:", res);
+      }).catch(err => {
+        console.log("发表失败：", err);
+      })
+      // 清空输入框
+      this.name = ''
+      this.note = ''
+    }
   },
 };
 </script>
@@ -112,6 +137,7 @@ export default {
 
   label,
   input,
+  button,
   textarea {
     position: absolute;
   }
