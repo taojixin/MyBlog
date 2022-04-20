@@ -7,7 +7,7 @@
     </el-breadcrumb>
     <!-- 留言区域 -->
     <!-- <form class="panel" id="form_note" name="myForm" method="post" action="http://localhost:8881/api/comment/create"> -->
-    <div class="panel" >
+    <div class="panel">
       <h2><span>欢迎留言</span></h2>
       <label for="name" class="label_name">请输入昵称：</label>
       <input
@@ -18,95 +18,168 @@
         v-model="name"
       />
       <label for="note" class="label_note">留言：</label>
-      <textarea class="textarea" id="note" placeholder="你的留言" v-model="note"></textarea>
-      <button  id="submit" @click="submit">提   交</button>
+      <textarea
+        class="textarea"
+        id="note"
+        placeholder="你的留言"
+        v-model="note"
+      ></textarea>
+      <button id="submit" @click="submit">提 交</button>
       <!-- <input type="submit" id="submit" value="提   交" /> -->
     </div>
     <!-- 留言展示区域 -->
     <div class="message" v-for="item in comments" :key="item.id">
-      <h5>{{ item.name }}：</h5>
-      <i class="date iconfont icon-24gl-calendar"> {{ item.time }}</i>
-      <p>{{ item.message }}</p>
-      <i class="good iconfont icon-icon1" @click="giveALike(item.id)"></i>
-      <span class="count">({{ item.good }})</span>
+      <h5>{{ item.com_name }}：</h5>
+      <i class="date iconfont icon-24gl-calendar"> {{ item.create_time }}</i>
+      <p>{{ item.com_content }}</p>
+      <i
+        data-id="false"
+        class="good iconfont icon-icon1"
+        @click="giveALike($event, item.id)"
+      ></i>
+      <span class="count">({{ item.good_number }})</span>
+    </div>
+
+    <!-- 提交弹出层 -->
+    <div class="popout" v-show="ifHidden">
+      <div class="box">
+        <h4>评论成功!</h4>
+        <button @click="popoutHidde">确定</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import requests from "@/api/request";
-import {formatTime} from '@/utils'
+import { formatTime } from "@/utils";
 export default {
+  created() {
+    this.getAllComments();
+  },
+  mounted() {},
   data() {
     return {
-      comments: [
-        {
-          id: 0,
-          name: "徐干",
-          time: "2022.4.12",
-          good: 5,
-          message: "高殿郁崇崇，广厦凄泠泠。微风起闺闼，落日照阶庭。踟躇云屋下，啸歌倚华楹。君行殊不返，我饰为谁容。炉薰阖不用，镜匣上尘生。绮罗失常色，金翠暗无精。嘉肴既忘御，旨酒亦常停。顾瞻空寂寂，唯闻燕雀声。忧思连相属，中心如宿醒。",
-        },
-        {
-          id: 1,
-          name: "欧阳修",
-          time: "2022.4.12",
-          good: 6,
-          message:
-            "月波清霁，烟容明淡，灵汉旧期还至。鹊迎桥路据天津，映夹岸、星榆点缀。云屏未卷，仙鸡催晓，肠断去年情味。多应天意不教长，恐恁把、欢娱容易。",
-        },
-        {
-          id: 2,
-          name: "庚肩吾",
-          time: "2022.4.12",
-          good: 6,
-          message:
-            "古人谩歌西飞燕，十年不见狂夫面。三更风作切梦刀，万转愁成系肠线。所嗟不及牛女星，一年一度得相见。",
-        },
-        {
-          id: 3,
-          name: "白居易",
-          time: "2022.4.12",
-          good: 5,
-          message: "烟霄微月澹长空，银汉秋期万古同。七月七日长生殿，夜半无人私语时，天长地久有时尽，此恨绵绵无绝期",
-        },
-        {
-          id: 4,
-          name: "朱淑真",
-          time: "2022.4.12",
-          good: 5,
-          message: "连理枝头花正开，妒花风雨便相催。愿教青帝常为主，莫遣纷纷点翠苔。",
-        },
-      ],
-      name: '',
-      note: '',
-
+      comments: [],
+      // comments: [
+      //   {
+      //     id: 0,
+      //     name: "徐干",
+      //     time: "2022.4.12",
+      //     good: 5,
+      //     message: "高殿郁崇崇，广厦凄泠泠。微风起闺闼，落日照阶庭。踟躇云屋下，啸歌倚华楹。君行殊不返，我饰为谁容。炉薰阖不用，镜匣上尘生。绮罗失常色，金翠暗无精。嘉肴既忘御，旨酒亦常停。顾瞻空寂寂，唯闻燕雀声。忧思连相属，中心如宿醒。",
+      //   },
+      //   {
+      //     id: 1,
+      //     name: "欧阳修",
+      //     time: "2022.4.12",
+      //     good: 6,
+      //     message:
+      //       "月波清霁，烟容明淡，灵汉旧期还至。鹊迎桥路据天津，映夹岸、星榆点缀。云屏未卷，仙鸡催晓，肠断去年情味。多应天意不教长，恐恁把、欢娱容易。",
+      //   },
+      //   {
+      //     id: 2,
+      //     name: "庚肩吾",
+      //     time: "2022.4.12",
+      //     good: 6,
+      //     message:
+      //       "古人谩歌西飞燕，十年不见狂夫面。三更风作切梦刀，万转愁成系肠线。所嗟不及牛女星，一年一度得相见。",
+      //   },
+      //   {
+      //     id: 3,
+      //     name: "白居易",
+      //     time: "2022.4.12",
+      //     good: 5,
+      //     message: "烟霄微月澹长空，银汉秋期万古同。七月七日长生殿，夜半无人私语时，天长地久有时尽，此恨绵绵无绝期",
+      //   },
+      //   {
+      //     id: 4,
+      //     name: "朱淑真",
+      //     time: "2022.4.12",
+      //     good: 5,
+      //     message: "连理枝头花正开，妒花风雨便相催。愿教青帝常为主，莫遣纷纷点翠苔。",
+      //   },
+      // ],
+      name: "", // 名字输入框内容
+      note: "", // 留言输入框内容
+      ifHidden: false, // popout弹框的显示与隐藏
     };
   },
   methods: {
+    // 获取评论信息
+    async getAllComments() {
+      const result = await requests.get("/comment/getcomments");
+      this.comments = result;
+    },
     // 点赞
-    giveALike(id) {
-      this.comments[id].good++;
-      const good = document.getElementsByClassName("good")[id];
-      good.style.color = "#2387f2";
+    giveALike(event, id) {
+      // 获取点击事件的当前元素节点
+      const nodeGood = event.target;
+      // 获取自定义属性的值，默认值为false，这里通过nodeGood.dataset.id获得的是"false"字符串，而不是布尔型
+      let message = nodeGood.dataset.id;
+      // 将自定义属性的值转换为布尔值
+      let isStyle;
+      if (message === "false") {
+        isStyle = false;
+      } else {
+        isStyle = true;
+      }
+      if (isStyle) {
+        nodeGood.style.color = "black";
+        nodeGood.style.fontSize = "30px";
+        nodeGood.dataset.id = false;
+        requests
+          .post("/comment/givelike", {
+            ifTrue: false,
+            commentId: id,
+          })
+          .then((resolve) => {
+            this.getAllComments();
+          });
+      } else {
+        nodeGood.style.color = "#2387f2";
+        nodeGood.style.fontSize = "40px";
+        nodeGood.dataset.id = true;
+        requests
+          .post("/comment/givelike", {
+            ifTrue: true,
+            commentId: id,
+          })
+          .then((resolve) => {
+            this.getAllComments();
+          });
+      }
     },
     // 提交评论信息
     submit() {
       // 获取系统当前时间
-      const nowTime = formatTime()
-      requests.post('/comment/create', {
-        name: this.name,
-        createTime: nowTime,
-        note: this.note,
-      }).then(res => {
-        console.log("发表成功:", res);
-      }).catch(err => {
-        console.log("发表失败：", err);
-      })
+      const nowTime = formatTime();
+      requests
+        .post("/comment/create", {
+          name: this.name,
+          createTime: nowTime,
+          note: this.note,
+        })
+        .then((res) => {
+          console.log("发表成功:", res);
+          // 所以重新加载评论列表放在这里，当评论成功后重新属性评论列表
+          this.getAllComments();
+        })
+        .catch((err) => {
+          console.log("发表失败：", err);
+        });
       // 清空输入框
-      this.name = ''
-      this.note = ''
-    }
+      this.name = "";
+      this.note = "";
+      // 重新加载评论列表 不能写在这里，写在这里不能即使刷新，因为请求为异步评球有延迟，提交评论请求还没结束这里的函数就结束了，所以不能及时刷新
+      // this.getAllComments()
+      // 显示弹框
+      this.ifHidden = true;
+    },
+    // 点击隐藏弹框
+    popoutHidde() {
+      this.ifHidden = false;
+    },
   },
 };
 </script>
@@ -114,9 +187,11 @@ export default {
 <style lang="less">
 .note {
   // 超出部分 滚动
-  overflow-y: scroll;
+  overflow: scroll;
   max-height: 700px;
+  position: relative;
 }
+// 留言区域
 .panel {
   // border: 1px solid black;
   position: relative;
@@ -206,7 +281,7 @@ export default {
     }
   }
 }
-
+// 留言展示区域
 .message {
   margin-top: 10px;
   // height: 100px;
@@ -241,7 +316,7 @@ export default {
     font-size: 30px;
     transition: all 0.4;
     &:hover {
-      font-size: 40px;
+      // font-size: 40px;
       font-weight: bold;
       color: #2387f2;
     }
@@ -252,6 +327,50 @@ export default {
     right: 8px;
     font-size: 18px;
     color: gray;
+  }
+}
+// 弹框区域
+.popout {
+  position: fixed;
+  width: 300px;
+  height: 200px;
+  // 隐藏
+  // display: none;
+  // background-image: linear-gradient(to top, #a8d2e4 0%, #acc6ee 99%, #d0d4d9 100%);
+  background-color: rgba(95, 150, 190, 0.5);
+  // opacity: .9;
+  border-radius: 5px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  .box {
+    position: relative;
+    h4,
+    button {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    h4 {
+      margin: 0;
+      top: 50px;
+      font-size: 20px;
+      letter-spacing: 10px;
+      color: #305483;
+    }
+    button {
+      width: 80px;
+      height: 40px;
+      top: 130px;
+      border-radius: 5px;
+      background-color: #c9d6e7;
+      border: 1px solid #8080bd;
+      transition: all 0.5s;
+      &:hover {
+        cursor: pointer;
+        background-color: #a1bbdd;
+      }
+    }
   }
 }
 </style>
