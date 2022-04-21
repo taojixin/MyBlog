@@ -28,7 +28,7 @@
       <!-- <input type="submit" id="submit" value="提   交" /> -->
     </div>
     <!-- 留言展示区域 -->
-    <div class="message" v-for="item in comments" :key="item.id">
+    <div class="note-message" v-for="item in comments" :key="item.id">
       <h5>{{ item.com_name }}：</h5>
       <i class="date iconfont icon-24gl-calendar"> {{ item.create_time }}</i>
       <p>{{ item.com_content }}</p>
@@ -43,7 +43,7 @@
     <!-- 提交弹出层 -->
     <div class="popout" v-show="ifHidden">
       <div class="box">
-        <h4>评论成功!</h4>
+        <h4>{{ notice }}</h4>
         <button @click="popoutHidde">确定</button>
       </div>
     </div>
@@ -102,6 +102,7 @@ export default {
       // ],
       name: "", // 名字输入框内容
       note: "", // 留言输入框内容
+      notice: "", // 弹框提示信息
       ifHidden: false, // popout弹框的显示与隐藏
     };
   },
@@ -111,7 +112,7 @@ export default {
       const result = await requests.get("/comment/getcomments");
       this.comments = result;
     },
-    // 点赞
+    // 点赞按钮
     giveALike(event, id) {
       // 获取点击事件的当前元素节点
       const nodeGood = event.target;
@@ -150,24 +151,31 @@ export default {
           });
       }
     },
-    // 提交评论信息
+    // 提交按钮
     submit() {
       // 获取系统当前时间
       const nowTime = formatTime();
-      requests
-        .post("/comment/create", {
-          name: this.name,
-          createTime: nowTime,
-          note: this.note,
-        })
-        .then((res) => {
-          console.log("发表成功:", res);
-          // 所以重新加载评论列表放在这里，当评论成功后重新属性评论列表
-          this.getAllComments();
-        })
-        .catch((err) => {
-          console.log("发表失败：", err);
-        });
+      // 判断内容和姓名受否为空，不为空则弹窗提示
+      if (this.name === "" || this.note === "") {
+        this.notice = "不能为空！";
+      } else {
+        this.notice = '' // 消除上一次弹窗提示信息
+        requests
+          .post("/comment/create", {
+            name: this.name,
+            createTime: nowTime,
+            note: this.note,
+          })
+          .then((res) => {
+            this.notice = "评论成功！";
+            // 所以重新加载评论列表放在这里，当评论成功后重新属性评论列表
+            this.getAllComments();
+          })
+          .catch((err) => {
+            this.notice = "评论失败";
+          });
+      }
+
       // 清空输入框
       this.name = "";
       this.note = "";
@@ -183,7 +191,6 @@ export default {
   },
 };
 </script>
-
 <style lang="less">
 .note {
   // 超出部分 滚动
@@ -282,11 +289,8 @@ export default {
   }
 }
 // 留言展示区域
-.message {
+.note-message {
   margin-top: 10px;
-  // height: 100px;
-  // border-left: 1px solid #2387f2;
-  // border-right: 1px solid #2387f2;
   border: 2px solid transparent;
   position: relative;
   padding: 10px;
@@ -331,7 +335,8 @@ export default {
 }
 // 弹框区域
 .popout {
-  position: fixed;
+  position: absolute;
+  // position: fixed;
   width: 300px;
   height: 200px;
   // 隐藏
@@ -341,8 +346,14 @@ export default {
   // opacity: .9;
   border-radius: 5px;
   top: 50%;
-  left: 50%;
+  left: 35%;
   transform: translateX(-50%) translateY(-50%);
+
+  transition: all 0.3s;
+  &:hover {
+    width: 320px;
+    height: 210px;
+  }
   .box {
     position: relative;
     h4,

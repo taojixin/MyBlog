@@ -1,5 +1,8 @@
 <template>
   <div class="study">
+    <!-- 笔记分类下拉列表 -->
+    <DropDown></DropDown>
+    <!-- 面包屑导航 -->
     <el-breadcrumb  separator="/">
       <el-breadcrumb-item :to="{path:'/About'}">首页</el-breadcrumb-item>
       <el-breadcrumb-item>笔记</el-breadcrumb-item>
@@ -10,10 +13,10 @@
 </template>
 
 <script>
-import Card from '@/view/other/Card'
 import CardOne from '@/view/other/CardOne'
+import DropDown from '@/components/DropDown'
 export default {
-  components: {Card,CardOne},
+  components: {CardOne, DropDown},
   data() {
     return {
       content: [
@@ -50,6 +53,7 @@ export default {
 
 <style lang="less" scoped>
 .study {
+  position: relative;
   max-height: 740px;
   overflow-y: scroll;
 }
