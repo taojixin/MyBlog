@@ -8,7 +8,6 @@ import store from './store'
 import './plugins/element.js'
 // 导入字体图标
 import './assets/fonts/iconfont.css'
-// import '@/view/other/fonts/font.css'
 // 导入全局样式表
 import './assets/css/global.css'
 // 导入笔记样式

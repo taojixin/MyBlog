@@ -60,46 +60,7 @@ export default {
   mounted() {},
   data() {
     return {
-      comments: [],
-      // comments: [
-      //   {
-      //     id: 0,
-      //     name: "徐干",
-      //     time: "2022.4.12",
-      //     good: 5,
-      //     message: "高殿郁崇崇，广厦凄泠泠。微风起闺闼，落日照阶庭。踟躇云屋下，啸歌倚华楹。君行殊不返，我饰为谁容。炉薰阖不用，镜匣上尘生。绮罗失常色，金翠暗无精。嘉肴既忘御，旨酒亦常停。顾瞻空寂寂，唯闻燕雀声。忧思连相属，中心如宿醒。",
-      //   },
-      //   {
-      //     id: 1,
-      //     name: "欧阳修",
-      //     time: "2022.4.12",
-      //     good: 6,
-      //     message:
-      //       "月波清霁，烟容明淡，灵汉旧期还至。鹊迎桥路据天津，映夹岸、星榆点缀。云屏未卷，仙鸡催晓，肠断去年情味。多应天意不教长，恐恁把、欢娱容易。",
-      //   },
-      //   {
-      //     id: 2,
-      //     name: "庚肩吾",
-      //     time: "2022.4.12",
-      //     good: 6,
-      //     message:
-      //       "古人谩歌西飞燕，十年不见狂夫面。三更风作切梦刀，万转愁成系肠线。所嗟不及牛女星，一年一度得相见。",
-      //   },
-      //   {
-      //     id: 3,
-      //     name: "白居易",
-      //     time: "2022.4.12",
-      //     good: 5,
-      //     message: "烟霄微月澹长空，银汉秋期万古同。七月七日长生殿，夜半无人私语时，天长地久有时尽，此恨绵绵无绝期",
-      //   },
-      //   {
-      //     id: 4,
-      //     name: "朱淑真",
-      //     time: "2022.4.12",
-      //     good: 5,
-      //     message: "连理枝头花正开，妒花风雨便相催。愿教青帝常为主，莫遣纷纷点翠苔。",
-      //   },
-      // ],
+      comments: [], // 留言列表
       name: "", // 名字输入框内容
       note: "", // 留言输入框内容
       notice: "", // 弹框提示信息
@@ -107,13 +68,13 @@ export default {
     };
   },
   methods: {
-    // 获取评论信息
+    // 获取评论信息（按时间排序的最近的前十条）
     async getAllComments() {
       const result = await requests.get("/comment/getcomments");
-      this.comments = result;
+      this.comments = result.data;
     },
-    // 点赞按钮
-    giveALike(event, id) {
+    // 点赞按钮  注：这里的点赞与取消点赞写的有点复杂，后面有时间会想其他方法优化
+    async giveALike(event, id) {
       // 获取点击事件的当前元素节点
       const nodeGood = event.target;
       // 获取自定义属性的值，默认值为false，这里通过nodeGood.dataset.id获得的是"false"字符串，而不是布尔型
@@ -129,51 +90,47 @@ export default {
         nodeGood.style.color = "black";
         nodeGood.style.fontSize = "30px";
         nodeGood.dataset.id = false;
-        requests
-          .post("/comment/givelike", {
-            ifTrue: false,
-            commentId: id,
-          })
-          .then((resolve) => {
-            this.getAllComments();
-          });
+        const { meta } = await requests.post("/comment/givelike", {
+          ifTrue: false,
+          commentId: id,
+        });
+        if (meta.status === 200) {
+          this.getAllComments();
+        }
       } else {
         nodeGood.style.color = "#2387f2";
         nodeGood.style.fontSize = "40px";
         nodeGood.dataset.id = true;
-        requests
-          .post("/comment/givelike", {
-            ifTrue: true,
-            commentId: id,
-          })
-          .then((resolve) => {
-            this.getAllComments();
-          });
+        const { meta } = await requests.post("/comment/givelike", {
+          ifTrue: true,
+          commentId: id,
+        });
+        if (meta.status === 200) {
+          this.getAllComments();
+        }
       }
     },
     // 提交按钮
-    submit() {
+    async submit() {
       // 获取系统当前时间
       const nowTime = formatTime();
       // 判断内容和姓名受否为空，不为空则弹窗提示
       if (this.name === "" || this.note === "") {
         this.notice = "不能为空！";
       } else {
-        this.notice = '' // 消除上一次弹窗提示信息
-        requests
-          .post("/comment/create", {
-            name: this.name,
-            createTime: nowTime,
-            note: this.note,
-          })
-          .then((res) => {
-            this.notice = "评论成功！";
-            // 所以重新加载评论列表放在这里，当评论成功后重新属性评论列表
-            this.getAllComments();
-          })
-          .catch((err) => {
-            this.notice = "评论失败";
-          });
+        this.notice = ""; // 消除上一次弹窗提示信息
+        const { meta } = await requests.post("/comment/create", {
+          name: this.name,
+          createTime: nowTime,
+          note: this.note,
+        });
+        if (meta.status === 200) {
+          this.notice = "留言成功！";
+          // 所以重新加载评论列表放在这里，当评论成功后重新属性评论列表
+          this.getAllComments();
+        } else {
+          this.notice = "留言失败";
+        }
       }
 
       // 清空输入框

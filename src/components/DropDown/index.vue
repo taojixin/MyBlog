@@ -105,7 +105,7 @@ export default {
     background-color: rgb(152, 152, 185);
     overflow: hidden;
     opacity: 0;
-    z-index: 1;
+    // z-index: 1;
     transition: all 0.5s;
     ul {
       margin: 0;
@@ -130,6 +130,7 @@ export default {
   .open-list {
     opacity: 1;
     color: white;
+    z-index: 1;
   }
 }
 </style>
