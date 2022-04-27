@@ -21,6 +21,31 @@ const reqText = () => {
   return requests({url: '/notes/gitbasic', method: 'get'})
 }
 
+// 获取笔记分类接口
+const getNoteSort = () => {
+  return requests.get('/notes/getsortlist')
+}
+// 根据笔记分类获取笔记
+const getSomeNote = (sort) => {
+  return requests({
+    url: '/notes/getsomenote',
+    method: 'post',
+    data: {
+      sort
+    }
+  })
+}
+// 根据id获取笔记内容
+const getNoteContent = (id) => {
+  return requests({
+    url: '/notes/getnotecontent',
+    method: 'post',
+    data: {
+      noteId: id
+    }
+  })
+}
+
 
 export {
   reqDirectory,
@@ -28,5 +53,8 @@ export {
   reqVueBasic,
   reqGitBasic,
   reqJqueryBasic,
-  reqText
+  reqText,
+  getNoteSort,
+  getSomeNote,
+  getNoteContent
 }

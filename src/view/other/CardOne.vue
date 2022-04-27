@@ -2,17 +2,14 @@
   <div class="card-one">
     <div class="content">
       <h2>{{message.index}}</h2>
-      <h3>{{message.title}}</h3>
+      <h3>{{message.note_title}}</h3>
       <p>
-        {{message.about}}
-        <!-- Realistic glass card hover effect, realistic glass card hover effect,
-        realistic glass card hover effect. -->
+        {{message.note_describe}}
       </p>
-      <!-- <a href="#" @click="jump()">Read More</a> -->
-      <router-link class="link" target="_blank" :to="'/'+message.path">Read More</router-link>
+      <router-link class="link" target="_blank" :to="{path:'/notes',query:{id:noteId}}">Read More</router-link>
     </div>
     <div class="show">
-      <h1>{{message.title}}</h1>
+      <h1>{{message.note_title}}</h1>
     </div>
   </div>
 </template>
@@ -21,8 +18,16 @@
 // // vanilla-tilt.js是一个平滑的3D倾斜JS库，具体参数配置查文档
 import VanillaTilt from "vanilla-tilt";
 export default {
+  created() {
+    this.noteId = this.message.id
+  },
   mounted() {
     this.threeD();
+  },
+  data() {
+    return {
+      noteId: 0
+    }
   },
   methods: {
     // 3D效果
@@ -36,10 +41,11 @@ export default {
     },
     // 跳转
     jump() {
-      this.$router.push(`/${this.message.path}`);
+      this.$router.push('/notes')
     }
   },
   props: {
+    // 父组件传过来的值
     message: {
       type: Object
     }

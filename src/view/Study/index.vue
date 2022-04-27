@@ -1,7 +1,7 @@
 <template>
   <div class="study">
     <!-- 笔记分类下拉列表 -->
-    <DropDown></DropDown>
+    <DropDown @getSort="getSort"></DropDown>
     <!-- 面包屑导航 -->
     <el-breadcrumb  separator="/">
       <el-breadcrumb-item :to="{path:'/About'}">首页</el-breadcrumb-item>
@@ -15,36 +15,21 @@
 <script>
 import CardOne from '@/view/other/CardOne'
 import DropDown from '@/components/DropDown'
+import {getSomeNote} from '@/api/index'
 export default {
   components: {CardOne, DropDown},
   data() {
     return {
-      content: [
-        {
-          index: '01',
-          title: "Vue基础",
-          about: "主要包括vue的初始化、指令、生命周期等知识点。",
-          path: "vuebasic",
-        },
-        {
-          index: '02',
-          title: 'Git基本使用',
-          about: '主要包含git的初始化、git常用命令、分支操作、远程仓库操作等。',
-          path: 'gitbasic'
-        },
-        {
-          index: '03',
-          title: 'jQuery基本用法',
-          about: '主要包含jQuery选择器、样式操作、元素操作等。',
-          path: 'jquery'
-        },
-        {
-          index: '04',
-          title: 'CSS',
-          about: '主要包括css常用样式，如字体、选择器、css三大特性。',
-          path: 'css'
-        }
-      ]
+      content: [],
+      noteSort: ''
+    }
+  },
+  methods: {
+    // 获取子组件传递过来的值，@getSort中的getSort为子组件自定义的事件名
+    async getSort(value) {
+      this.noteSort = value
+      const result = await getSomeNote(this.noteSort)
+      this.content = result.data.notes
     }
   }
   
@@ -55,6 +40,7 @@ export default {
 .study {
   position: relative;
   max-height: 740px;
+  height: 740px;
   overflow-y: scroll;
 }
 </style>

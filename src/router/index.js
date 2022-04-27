@@ -19,6 +19,8 @@ const GitBasic = () => import('@/view/notes/GitBasic')
 const jQuery = () => import('@/view/notes/jQuery')
 const Css = () => import('@/view/notes/Css')
 
+const Notes = () => import('@/view/notes')
+
 
 Vue.use(VueRouter)
 
@@ -46,16 +48,7 @@ const routes = [
   { path: '/gitbasic', component: GitBasic },
   { path: '/jquery', component: jQuery },
   { path: '/css', component: Css },
-  // {
-  //   path: '/home', component: Home, children: [
-  //     { path: '/introduce', component: introduce },
-  //     { path: '/resume', component: Resume },
-  //     { path: '/demo', component: Demo },
-  //     { path: '/study', component: Study },
-  //     { path: '/blog', component: Blog },
-  //     { path: '/contact', component: Contact },
-  //   ]
-  // }
+  { path: '/notes', component: Notes}
 ]
 
 const router = new VueRouter({

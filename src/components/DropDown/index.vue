@@ -23,6 +23,7 @@
     </div>
     <div :class="{ 'open-list': isOpen }" ref="list" class="dropdown-list">
       <ul>
+        <!-- 各个选项 -->
         <li v-for="item in options" :key="item" @click="select(item)">
           {{ item }}
         </li>
@@ -32,27 +33,41 @@
 </template>
 
 <script>
+import {getNoteSort} from '@/api/index'
 export default {
-  mounted() {},
+  mounted() {
+    this.getNoteSort()
+  },
   data() {
     return {
       // 下拉框的显示与隐藏
       isOpen: false,
       // 下拉框选项
-      options: ["JavaScript", "Java", "Node.js", "issue", "MySQL"],
+      options: [],
       // 下拉框的选项
       option: "默认",
     };
   },
   methods: {
+    // 下拉框的显示与隐藏
     show() {
       this.isOpen = !this.isOpen;
       this.$refs.list.opacity = 1;
     },
+    // 选择分类
     select(option) {
       this.option = option;
       this.isOpen = false;
+      // 子向父组件传值，第一个参数getSort为自定义的事件名，父组件中调用这个事件获取值
+      this.$emit("getSort", this.option)
     },
+    // 获取笔记分类
+    async getNoteSort() {
+      const result = await getNoteSort()
+      if (result.meta.status == 200) {
+        this.options = result.data.sortArray
+      }
+    }
   },
 };
 </script>
@@ -103,7 +118,7 @@ export default {
     width: 400px;
     border-radius: 10px;
     background-color: rgb(152, 152, 185);
-    overflow: hidden;
+    // overflow: hidden;
     opacity: 0;
     // z-index: 1;
     transition: all 0.5s;
