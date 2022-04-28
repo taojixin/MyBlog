@@ -15,7 +15,7 @@
 <script>
 import CardOne from '@/view/other/CardOne'
 import DropDown from '@/components/DropDown'
-import {getSomeNote} from '@/api/index'
+import {getSomeNote, getAllNotes} from '@/api/index'
 export default {
   components: {CardOne, DropDown},
   data() {
@@ -24,12 +24,25 @@ export default {
       noteSort: ''
     }
   },
+  created() {
+    this.getAllNotes()
+  },
   methods: {
     // 获取子组件传递过来的值，@getSort中的getSort为子组件自定义的事件名
     async getSort(value) {
       this.noteSort = value
+      if (this.noteSort === '全部') {
+        this.getAllNotes()
+        return
+      }
       const result = await getSomeNote(this.noteSort)
       this.content = result.data.notes
+    },
+    // 获取所有笔记信息
+    async getAllNotes() {
+      const result = await getAllNotes(0)
+      this.content = result.data.content
+      console.log(this.content);
     }
   }
   

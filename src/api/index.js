@@ -45,6 +45,16 @@ const getNoteContent = (id) => {
     }
   })
 }
+// 获取所有笔记信息
+const getAllNotes = (num) => {
+  return requests({
+    method: 'post',
+    url: '/notes/getallnote',
+    data: {
+      number: num
+    }
+  })
+}
 
 
 export {
@@ -56,5 +66,6 @@ export {
   reqText,
   getNoteSort,
   getSomeNote,
-  getNoteContent
+  getNoteContent,
+  getAllNotes
 }

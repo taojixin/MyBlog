@@ -66,8 +66,9 @@ export default {
       const result = await getNoteSort()
       if (result.meta.status == 200) {
         this.options = result.data.sortArray
+        this.options.push('全部')
       }
-    }
+    },
   },
 };
 </script>
