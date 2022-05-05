@@ -31,20 +31,20 @@
               <h3>个人信息</h3>
               <ul>
                 <li>
-                  <span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span>：陶继鑫
+                  <span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>{{personal.myName}}
                 </li>
                 <li>
-                  <span>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</span
-                  >：18581766104
+                  <span>电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话：</span
+                  >{{personal.phoneNumber}}
                 </li>
                 <li>
-                  <span>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄</span>：20
+                  <span>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄：</span>{{personal.myAge}}
                 </li>
                 <li>
-                  <span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址</span
-                  >：四川省成都市郫都区
+                  <span>地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：</span
+                  >{{personal.myAddress}}
                 </li>
-                <li><span>工作经验</span>：暂无</li>
+                <li><span>工作经验：</span>{{personal.workExperience}}</li>
               </ul>
             </div>
           </div>
@@ -58,8 +58,8 @@
             <div class="message">
               <h3>实习意向</h3>
               <ul>
-                <li><span>从事职业</span>：web前端开发</li>
-                <li><span>期望薪资</span>：2.5K~5K</li>
+                <li><span>从事职业</span>{{jobIntention.professional}}</li>
+                <li><span>期望薪资</span>{{jobIntention.salary}}</li>
               </ul>
             </div>
           </div>
@@ -73,10 +73,10 @@
             <div class="message">
               <h3>教育背景</h3>
               <ul>
-                <li><span>学校名称</span>：四川工商学院</li>
-                <li><span>就读时间</span>：2020.07~2024.06</li>
-                <li><span>所学专业</span>：软件工程</li>
-                <li><span>学历学位</span>：本科</li>
+                <li><span>学校名称：</span>{{education.schoolName}}</li>
+                <li><span>就读时间：</span>{{education.startStudyTime}}</li>
+                <li><span>所学专业：</span>{{education.major}}</li>
+                <li><span>学历学位：</span>{{education.degree}}</li>
               </ul>
             </div>
           </div>
@@ -89,50 +89,26 @@
           <h4>专业技能</h4>
           <hr />
           <ul>
-            <li>熟悉html、css、JavaScript基础知识，了解html5&css3；</li>
-            <li>熟悉Ajax请求数据以及对axios的使用；</li>
-            <li>熟悉es6新特性，能够模块化开发项目；</li>
-            <li>掌握vue全家桶，能够使用vue全家桶构建项目；</li>
-            <li>掌握node.js，能够编写登录注册等简单接口；</li>
-            <li>了解JavaScript高级语法；</li>
-            <li>了解移动端开发；</li>
+            <li v-for="item in skills" :key="item">{{ item }}</li>
           </ul>
         </div>
         <!-- 项目经验 -->
         <div class="project">
           <h4>项目经验</h4>
           <hr />
-          <h5>1.电商后台管理系统</h5>
-          <ul>
-            <li>通过vue构建项目模块化开发；</li>
-            <li>使用Element-ui快速进行布局；</li>
-            <li>使用axios访问后台数据；</li>
-            <li>通过git管理代码并上传到远程仓库；</li>
-          </ul>
-          <h5 class="second">2.个人博客</h5>
-          <ul>
-            <li>使用vue构建项目模块化开发；</li>
-            <li>通过vue组件化开发，封装了自己的组件库；</li>
-            <li>通过vuex管理状态以及存储信息；</li>
-            <li>通过nginx代理服务器远程部署项目；</li>
-            <li>
-              访问地址<a href="http://120.79.177.24" target="_black"
-                >http://120.79.177.24</a
-              >；
-            </li>
-          </ul>
+          <div v-for="item in projects" :key="item">
+            <h5>{{item.title}}</h5>
+            <ul>
+              <li v-for="child in item.content" :key="child">{{child}}</li>
+            </ul>
+          </div>
         </div>
         <!-- 自我评价 -->
         <div class="assessment">
           <h4>自我评价</h4>
           <hr />
           <ul>
-            <li>有较强的自制力，主动学习新技能，热爱技术，提升自我；</li>
-            <li>踏实认真，有良好的学习协调能力和规划能力；</li>
-            <li>
-              善于独立思考，有良好的接受能力与学习能力，以及遇到问题的解决能力；
-            </li>
-            <li>缺少实际工作经验，不了解具体工作流程；</li>
+            <li v-for="item in evaluation" :key="item">{{item}}</li>
           </ul>
         </div>
       </div>
@@ -141,7 +117,71 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      // 专业技能
+      skills: [
+        "熟悉html、css、JavaScript基础知识，了解html5&css3；",
+        "熟悉Ajax请求数据以及对axios的使用；",
+        "熟悉es6新特性，能够模块化开发项目；",
+        "掌握vue全家桶，能够使用vue全家桶构建项目；",
+        "掌握node.js，能够编写登录注册等简单接口；",
+        "了解JavaScript高级语法；",
+        "了解移动端开发；",
+      ],
+      // 项目经验
+      projects: [
+        {
+          title: "1.电商后台管理系统",
+          content: [
+            "通过vue构建项目模块化开发；",
+            "使用Element-ui快速进行布局；",
+            "使用axios访问后台数据；",
+            "通过git管理代码并上传到远程仓库；",
+          ],
+        },
+        {
+          title: '2.个人博客',
+          content: [
+            "使用vue构建项目模块化开发；",
+            "通过vue组件化开发，封装了自己的组件库；",
+            "通过vuex管理状态以及存储信息；",
+            "通过nginx代理服务器远程部署项目；",
+            "访问地址: http://www.libertys.cn/"
+          ]
+        }
+      ],
+      // 自我评价
+      evaluation: [
+        '有较强的自制力，主动学习新技能，热爱技术，提升自我；',
+        '踏实认真，有良好的学习协调能力和规划能力；',
+        '善于独立思考，有良好的接受能力与学习能力，以及遇到问题的解决能力；',
+        '缺少实际工作经验，不了解具体工作流程；'
+      ],
+      // 教育背景
+      education: {
+        schoolName: '四川工商学院',
+        startStudyTime: '2020.07~2024.06',
+        major: '软件工程',
+        degree: '本科'
+      },
+      // 求实意向
+      jobIntention: {
+        professional: 'web前端开发',
+        salary: '2.5K~5K'
+      },
+      // 个人信息
+      personal: {
+        myName: '陶继鑫',
+        phoneNumber: '18581766104',
+        myAge: '20',
+        myAddress: '四川省成都市郫都区',
+        workExperience: '暂无'
+      }
+    };
+  },
+};
 </script>
 
 <style lang="less" scoped>
