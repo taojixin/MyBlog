@@ -10,49 +10,33 @@ const Introduce = () => import('@/view/Introduce')
 const Resume = () => import('@/view/Resume')
 const Demo = () => import('@/view/Demo')
 const Study = () => import('@/view/Study')
-const Note = () => import('@/view/Note')
+const Comments = () => import('@/view/Comments')
 const Contact = () => import('@/view/Contact')
 
 // 笔记
-const VueBasic = () => import('@/view/notes/VueBasic')
-const GitBasic = () => import('@/view/notes/GitBasic')
-const jQuery = () => import('@/view/notes/jQuery')
-const Css = () => import('@/view/notes/Css')
-
-const Notes = () => import('@/view/notes')
+const Notes = () => import('@/view/Notes')
 
 // 练习demo
-const StarrySky = () => import('@/view/other/Starrysky.vue')
 
 
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', redirect: '/sky', },
+  { path: '/', redirect: '/about', },
   {
     path: '/home', component: Home, children: [
-      { path: '/', redirect: '/about' },
-      { path: '/about', component: About },
+      { path: '/', redirect: '/introduce' },
       { path: '/introduce', component: Introduce },
       { path: '/resume', component: Resume },
       { path: '/demo', component: Demo },
-      {
-        path: '/study', component: Study,
-        children: [
-          // { path: '/vuebasic', name: 'VueBasic', component: VueBasic },
-        ]
-      },
-      { path: '/note', component: Note },
+      { path: '/study', component: Study },
+      { path: '/comments', component: Comments },
       { path: '/contact', component: Contact },
     ],
 
   },
-  { path: '/vuebasic', component: VueBasic },
-  { path: '/gitbasic', component: GitBasic },
-  { path: '/jquery', component: jQuery },
-  { path: '/css', component: Css },
+  { path: '/about', component: About },
   { path: '/notes', component: Notes},
-  { path: '/sky', component: StarrySky}
 ]
 
 const router = new VueRouter({
