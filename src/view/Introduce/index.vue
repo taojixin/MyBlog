@@ -8,9 +8,7 @@
     <header>
       <h1 class="me">Liberty</h1>
       <hr />
-      <p class="my_sentence">
-        如果debugging是一种消灭bug的过程，那编程就一定是把bug放进去的过程。
-      </p>
+      <p class="my_sentence">{{personal.signature}}</p>
     </header>
     <!-- 中间 -->
     <article>
@@ -19,9 +17,29 @@
       </div>
       <div class="box_right">
         <table>
-          <tr v-for="(item, index) in message" :key="index">
-            <td>{{ item.left }}</td>
-            <td>{{ item.right }}</td>
+          <tr>
+            <td>姓名 | <span>{{personal.myName}}</span></td>
+            <td>电话 | <span>{{personal.phone}}</span></td>
+          </tr>
+          <tr>
+            <td>性别 | <span>{{personal.sex}}</span></td>
+            <td>邮箱 | <span>{{personal.email}}</span></td>
+          </tr>
+          <tr>
+            <td>出生 | <span>{{personal.birthday}}</span></td>
+            <td>Q Q | <span>{{personal.qqNumber}}</span></td>
+          </tr>
+          <tr>
+            <td>居住 | <span>{{personal.address}}</span></td>
+            <td>户籍 | <span>{{personal.koseki}}</span></td>
+          </tr>
+          <tr>
+            <td>学历 | <span>{{personal.education}}</span></td>
+            <td>学校 | <span>{{personal.school}}</span></td>
+          </tr>
+          <tr>
+            <td>专业 | <span>{{personal.professional}}</span></td>
+            <td>状态 | <span>{{personal.studyState}}</span></td>
           </tr>
         </table>
       </div>
@@ -29,7 +47,7 @@
     <!-- 底部 -->
     <footer>
       <h3>兴趣爱好：</h3>
-      <p>吃饭睡觉打豆豆！</p>
+      <p>{{personal.hobbies}}</p>
     </footer>
   </div>
 </template>
@@ -38,14 +56,22 @@
 export default {
   data() {
     return {
-      message: [
-        { left: "姓名 | 陶继鑫", right: "手机 | 18581766104" },
-        { left: "性别 | 男", right: "邮箱 | 491675919@qq.com" },
-        { left: "出生 | 2001.07.24", right: "qq号 | 491675919" },
-        { left: "居住 | 四川省资阳市", right: "户籍 | 四川省资阳市" },
-        { left: "学历 | 本科", right: "学校 | 四川工商学院" },
-        { left: "专业 | 软件工程", right: "状态 | 学生就读" },
-      ],
+      personal: {
+        myName: '陶继鑫',
+        phone: '18581766104',
+        sex: '男',
+        email: '491675919@qq.com',
+        birthday: '2001.07.24',
+        qqNumber: '491675919',
+        address: '四川省资阳市',
+        koseki: '四川省资阳市', // 户籍
+        education: '本科',
+        school: '四川工商学院',
+        professional: '软件工程',
+        studyState: '学生就读',
+        signature: '如果debugging是一种消灭bug的过程，那编程就一定是把bug放进去的过程。',
+        hobbies: '吃饭睡觉打豆豆！'
+      }
     };
   },
 };
@@ -138,8 +164,10 @@ article {
 
         td {
           display: block;
-
           flex: 1;
+          span {
+            color: #46659f;
+          }
         }
       }
     }

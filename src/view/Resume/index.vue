@@ -166,7 +166,7 @@ export default {
         major: '软件工程',
         degree: '本科'
       },
-      // 求实意向
+      // 实习意向
       jobIntention: {
         professional: 'web前端开发',
         salary: '2.5K~5K'

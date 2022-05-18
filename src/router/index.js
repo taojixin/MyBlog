@@ -21,11 +21,14 @@ const Css = () => import('@/view/notes/Css')
 
 const Notes = () => import('@/view/notes')
 
+// 练习demo
+const StarrySky = () => import('@/view/other/Starrysky.vue')
+
 
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', redirect: '/Home', },
+  { path: '/', redirect: '/sky', },
   {
     path: '/home', component: Home, children: [
       { path: '/', redirect: '/about' },
@@ -48,7 +51,8 @@ const routes = [
   { path: '/gitbasic', component: GitBasic },
   { path: '/jquery', component: jQuery },
   { path: '/css', component: Css },
-  { path: '/notes', component: Notes}
+  { path: '/notes', component: Notes},
+  { path: '/sky', component: StarrySky}
 ]
 
 const router = new VueRouter({
