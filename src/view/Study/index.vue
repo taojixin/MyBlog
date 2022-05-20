@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import CardOne from '@/view/other/CardOne'
-import DropDown from '@/components/DropDown'
+import CardOne from '@/view/Study/CardOne.vue'
+import DropDown from '@/view/Study/DropDown.vue'
 import {getSomeNote, getAllNotes} from '@/api/index'
 export default {
   components: {CardOne, DropDown},

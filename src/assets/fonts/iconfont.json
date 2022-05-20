@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "20587209",
+      "name": "知识点",
+      "font_class": "zhishidian",
+      "unicode": "e6d4",
+      "unicode_decimal": 59092
+    },
+    {
+      "icon_id": "16429132",
+      "name": "后台管理-系统管理员",
+      "font_class": "houtaiguanli-xitongguanliyuan",
+      "unicode": "e6dc",
+      "unicode_decimal": 59100
+    },
+    {
       "icon_id": "4175511",
       "name": "下箭头",
       "font_class": "xiajiantou",

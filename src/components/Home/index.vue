@@ -1,5 +1,6 @@
 <template>
   <div class="sidenav">
+    <!-- 左侧盒子 -->
     <div class="left-box">
       <!-- 导航信息列表 -->
       <ul>
@@ -26,10 +27,12 @@
         <i class="iconfont icon-user"> </i>
       </div>
     </div>
+    <!-- 右侧盒子 -->
     <div class="right-box">
       <router-view></router-view>
       <div class="handler"></div>
     </div>
+    <!-- 底部 -->
     <div class="bottom"><a href="https://beian.miit.gov.cn" target="_blank">蜀ICP备2022007017号-1</a></div>
   </div>
 </template>
@@ -212,6 +215,7 @@ export default {
   box-sizing: border-box;
   
   min-width: 730px;
+  min-height: 700px;
   // height: 720px;
   padding: 20px;
 

@@ -5,7 +5,8 @@
       <h2>Liberty'blog</h2>
     </div>
     <!-- 进入 -->
-    <div class="enter" @click="jump('/home')">进入</div>
+    <div class="enter" @click="enter()">进入</div>
+    <!-- <div class="enter" @click="jump('/home')">进入</div> -->
     <!-- 旋转边框 -->
     <div class="box-roating">
       <div class="roating"></div>
@@ -29,6 +30,8 @@
         >蜀ICP备2022007017号-1</a
       >
     </div>
+    <!-- 遮挡层 -->
+    <div class="zhedang" ref="zhe"></div>
   </div>
 </template>
 
@@ -37,6 +40,14 @@ export default {
   methods: {
     jump(path) {
       this.$router.push(path);
+    },
+    enter() {
+      setTimeout(() => {
+        this.jump('/home')
+      }, 500);
+      this.$refs.zhe.style.width = '150vw'
+      this.$refs.zhe.style.height = '150vw'
+
     }
   }
 };
@@ -49,6 +60,21 @@ export default {
   overflow: hidden;
   position: relative;
   background-color: @bgcolor;
+  .zhedang {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #e9ebf6;
+    transition: all 1s;
+    z-index: 99;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 // 欢迎
 .box-welcome {
@@ -100,7 +126,7 @@ export default {
   line-height: 100px;
   font-size: 50px;
   letter-spacing: 10px;
-  z-index: 999;
+  z-index: 9;
   user-select: none; // 不可选择
   transition: all .5s;
   &:hover {
