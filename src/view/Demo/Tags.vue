@@ -1,5 +1,5 @@
 <template>
-  <div class="tags">
+  <div  @click="jump()" class="tags">
     <div class="sequence-tags">{{ toSon.sequence }}</div>
     <div class="describe-tags">{{ toSon.describe }}</div>
     <p class="knowledge-tags">
@@ -18,6 +18,7 @@ export default {
     toSon: {
       type: Object,
       default: {
+        path: "/tags",
         sequence: "1",
         describe: "简约CSS特效标签",
         knowkedge: "文字阴影text-shadow",
@@ -25,6 +26,12 @@ export default {
       },
     },
   },
+  methods: {
+    jump() {
+      this.$router.push('/showdemo')
+      // this.$router.push(this.toSon.path)
+    }
+  }
 };
 </script>
 

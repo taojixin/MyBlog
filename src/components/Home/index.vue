@@ -54,7 +54,7 @@ export default {
       directory: [
         { path: "introduce", class: "iconfont icon-user", text: "自我介绍" },
         { path: "resume", class: "iconfont icon-namecard", text: "简历" },
-        { path: "demo", class: "iconfont icon-form-fill", text: "练习项目" },
+        { path: "demo", class: "iconfont icon-form-fill", text: "练习  Demo" },
         { path: "study", class: "iconfont icon-suggest", text: "我的笔记" },
         { path: "comments", class: "iconfont icon-3column", text: "留言" },
         // { path: "contact", class: "iconfont icon-lianjie", text: "联系" },

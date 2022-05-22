@@ -18,6 +18,7 @@ const Contact = () => import('@/view/Contact')
 const Notes = () => import('@/view/Notes')
 
 // 练习demo
+const ShowDemo = () => import('@/view/Demo/demo/ShowTag.vue')
 const Card = () => import('@/view/other/Card.vue')
 const Tag = () => import('@/view/other/Tag')
 
@@ -39,7 +40,8 @@ const routes = [
   },
   { path: '/about', component: About }, // 首页
   { path: '/notes', component: Notes}, // 笔记页 markdown
-  { path: '/card', component: Card},
+  { path: '/showdemo', component: ShowDemo}, // demo
+  { path: '/card', component: Card}, 
   { path: '/tag', component: Tag},
   { path: '/login', component: Login},
 ]

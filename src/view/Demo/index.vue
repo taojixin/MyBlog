@@ -4,7 +4,7 @@
       <el-breadcrumb-item :to="{ path: '/About' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>练习项目</el-breadcrumb-item>
     </el-breadcrumb>
-    <Tags v-for="item in tagsMessage" :key="item.sequence" :toSon="item"></Tags>
+    <Tags v-for="item in tagsMessage" :key="item.path" :toSon="item"></Tags>
   </div>
 </template>
 
@@ -16,18 +16,21 @@ export default {
     return {
       tagsMessage: [
         {
+          path: "/tag",
           sequence: "1",
           describe: "简约CSS特效标签",
           knowkedge: "文字阴影text-shadow",
           imgSrc: require("@/assets/demo-img/tag.png"),
         },
         {
+          path: "/card",
           sequence: "2",
           describe: "简约CSS特效标签",
           knowkedge: "文字阴影text-shadow",
           imgSrc: require("@/assets/demo-img/card.png"),
         },
         {
+          path: "/login",
           sequence: "3",
           describe: "简约CSS特效标签",
           knowkedge: "文字阴影text-shadow",
@@ -35,7 +38,7 @@ export default {
         }
       ],
     };
-  },
+  }
 };
 </script>
 
