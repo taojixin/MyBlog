@@ -8,7 +8,7 @@
     <header>
       <h1 class="me">Liberty</h1>
       <hr />
-      <p class="my_sentence">{{personal.signature}}</p>
+      <p class="my_sentence">{{personal.my_signature}}</p>
     </header>
     <!-- 中间 -->
     <article>
@@ -18,28 +18,28 @@
       <div class="box_right">
         <table>
           <tr>
-            <td>姓名 | <span>{{personal.myName}}</span></td>
-            <td>电话 | <span>{{personal.phone}}</span></td>
+            <td>姓名 | <span>{{personal.my_name}}</span></td>
+            <td>电话 | <span>{{personal.my_phone}}</span></td>
           </tr>
           <tr>
-            <td>性别 | <span>{{personal.sex}}</span></td>
-            <td>邮箱 | <span>{{personal.email}}</span></td>
+            <td>性别 | <span>{{personal.my_sex}}</span></td>
+            <td>邮箱 | <span>{{personal.my_email}}</span></td>
           </tr>
           <tr>
-            <td>出生 | <span>{{personal.birthday}}</span></td>
-            <td>Q Q | <span>{{personal.qqNumber}}</span></td>
+            <td>出生 | <span>{{personal.my_birthday}}</span></td>
+            <td>Q Q | <span>{{personal.my_qq}}</span></td>
           </tr>
           <tr>
-            <td>居住 | <span>{{personal.address}}</span></td>
-            <td>户籍 | <span>{{personal.koseki}}</span></td>
+            <td>居住 | <span>{{personal.my_address}}</span></td>
+            <td>户籍 | <span>{{personal.my_koseki}}</span></td>
           </tr>
           <tr>
-            <td>学历 | <span>{{personal.education}}</span></td>
-            <td>学校 | <span>{{personal.school}}</span></td>
+            <td>学历 | <span>{{personal.my_education}}</span></td>
+            <td>学校 | <span>{{personal.my_school}}</span></td>
           </tr>
           <tr>
-            <td>专业 | <span>{{personal.professional}}</span></td>
-            <td>状态 | <span>{{personal.studyState}}</span></td>
+            <td>专业 | <span>{{personal.my_professional}}</span></td>
+            <td>状态 | <span>{{personal.my_state}}</span></td>
           </tr>
         </table>
       </div>
@@ -47,13 +47,18 @@
     <!-- 底部 -->
     <footer>
       <h3>兴趣爱好：</h3>
-      <p>{{personal.hobbies}}</p>
+      <p>{{personal.my_hobbyies}}</p>
     </footer>
   </div>
 </template>
 
 <script>
+import {getMyIntroduce} from'../../api/index'
 export default {
+  async created() {
+    this.personal = await getMyIntroduce()
+    console.log(await getMyIntroduce());
+  },
   data() {
     return {
       personal: {

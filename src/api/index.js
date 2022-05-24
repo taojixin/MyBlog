@@ -2,23 +2,23 @@
 import requests from "./request";
 
 const reqDirectory = () => {
-  return requests({url: '/home/directory',method: 'get'})
+  return requests({ url: '/home/directory', method: 'get' })
 }
 const reqCssBasic = () => {
-  return requests({url: '/notes/cssbasic', method: 'get'})
+  return requests({ url: '/notes/cssbasic', method: 'get' })
 }
 const reqVueBasic = () => {
-  return requests({url: '/notes/vuebasic', method: 'get'})
+  return requests({ url: '/notes/vuebasic', method: 'get' })
 }
 const reqGitBasic = () => {
-  return requests({url: '/notes/gitbasic', method: 'get'})
+  return requests({ url: '/notes/gitbasic', method: 'get' })
 }
 const reqJqueryBasic = () => {
-  return requests({url: '/notes/jquerybasic', method: 'get'})
+  return requests({ url: '/notes/jquerybasic', method: 'get' })
 }
 
 const reqText = () => {
-  return requests({url: '/notes/gitbasic', method: 'get'})
+  return requests({ url: '/notes/gitbasic', method: 'get' })
 }
 
 // 获取笔记分类接口
@@ -56,6 +56,17 @@ const getAllNotes = (num) => {
   })
 }
 
+// 获取个人介绍全部内容
+const getMyIntroduce = () => {
+  return requests({
+    method: 'post',
+    url: '/introduce/getintroduce',
+    data: {
+      queryKey: 'all'
+    }
+  })
+}
+
 
 export {
   reqDirectory,
@@ -67,5 +78,6 @@ export {
   getNoteSort,
   getSomeNote,
   getNoteContent,
-  getAllNotes
+  getAllNotes,
+  getMyIntroduce
 }
