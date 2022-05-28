@@ -4,39 +4,22 @@
       <el-breadcrumb-item :to="{ path: '/About' }">首页</el-breadcrumb-item>
       <el-breadcrumb-item>练习项目</el-breadcrumb-item>
     </el-breadcrumb>
-    <Tags v-for="item in tagsMessage" :key="item.path" :toSon="item"></Tags>
+    <Tags v-for="(item, index) in tagsMessage" :key="item.id" :demoIndex="index" :toSon="item"></Tags>
   </div>
 </template>
 
 <script>
+import {getDemoMes} from  '../../api/index'
 import Tags from "@/view/Demo/Tags.vue";
 export default {
   components: { Tags },
+  async created() {
+    // 获取所有demo信息，用于后面传递给子组件渲染数据
+    this.tagsMessage = await getDemoMes(0)
+  },
   data() {
     return {
-      tagsMessage: [
-        {
-          path: "/tag",
-          sequence: "1",
-          describe: "简约CSS特效标签",
-          knowkedge: "文字阴影text-shadow",
-          imgSrc: require("@/assets/demo-img/tag.png"),
-        },
-        {
-          path: "/card",
-          sequence: "2",
-          describe: "简约CSS特效标签",
-          knowkedge: "文字阴影text-shadow",
-          imgSrc: require("@/assets/demo-img/card.png"),
-        },
-        {
-          path: "/login",
-          sequence: "3",
-          describe: "简约CSS特效标签",
-          knowkedge: "文字阴影text-shadow",
-          imgSrc: require("@/assets/demo-img/login.png"),
-        }
-      ],
+      tagsMessage: [],
     };
   }
 };

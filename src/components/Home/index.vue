@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import {reqDirectory} from '@/api/index'
 export default {
   created() {
     // vue浏览器刷新跳转指定页面

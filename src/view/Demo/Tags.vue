@@ -1,37 +1,49 @@
 <template>
-  <div  @click="jump()" class="tags">
-    <div class="sequence-tags">{{ toSon.sequence }}</div>
-    <div class="describe-tags">{{ toSon.describe }}</div>
+  <div @click="jump()" class="tags">
+    <div class="sequence-tags">{{ demoIndex + 1 }}</div>
+    <div class="describe-tags">{{ toSon.demo_describe }}</div>
     <p class="knowledge-tags">
-      <i class="iconfont icon-zhishidian"></i>{{ toSon.knowkedge }}
+      <i class="iconfont icon-zhishidian"></i>{{ toSon.demo_knowkedge }}
     </p>
-    <img class="img-tags" :src="toSon.imgSrc" alt="" />
+    <img class="img-tags" :src="imgSrc" alt="" />
   </div>
 </template>
 
 <script>
 export default {
+  created() {},
   data() {
     return {};
   },
   props: {
+    // 获取父组件传递过来的参数并渲染
     toSon: {
       type: Object,
       default: {
-        path: "/tags",
-        sequence: "1",
-        describe: "简约CSS特效标签",
-        knowkedge: "文字阴影text-shadow",
-        imgSrc: require("@/assets/demo-img/card.png"),
+        id: 0,
+        user_id: 0,
+        demo_code: "",
+        demo_createtime: "",
+        demo_describe: "",
+        demo_knowkedge: "",
+        path: "",
       },
     },
+    demoIndex: 0,
   },
   methods: {
     jump() {
-      this.$router.push('/showdemo')
-      // this.$router.push(this.toSon.path)
-    }
-  }
+      // 通过路由传递参数demo_id，然后跳转到的那个组件再用过id获取相关内容
+      this.$router.push(
+        `/${this.toSon.path}?id=${this.toSon.id}`
+      );
+    },
+  },
+  computed: {
+    imgSrc: function () {
+      return `/admin/getdemoimg?demo_id=${this.toSon.id}`;
+    },
+  },
 };
 </script>
 
@@ -69,14 +81,14 @@ export default {
   .describe-tags {
     position: absolute;
     top: 30px;
-    left: 70px;
+    left: 90px;
     color: #6e86a4;
   }
   // 知识点
   .knowledge-tags {
     position: absolute;
     top: 50px;
-    left: 65px;
+    left: 90px;
     font-size: 12px;
     color: #a6b2c1;
     i {

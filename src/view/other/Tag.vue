@@ -23,9 +23,6 @@ export default {};
 <style lang="less" scoped>
 .tag {
   position: relative;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
   width: 700px;
   height: 400px;
   border: #fff 10px solid;

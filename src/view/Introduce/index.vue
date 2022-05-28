@@ -57,7 +57,6 @@ import {getMyIntroduce} from'../../api/index'
 export default {
   async created() {
     this.personal = await getMyIntroduce()
-    console.log(await getMyIntroduce());
   },
   data() {
     return {

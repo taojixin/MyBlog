@@ -1,21 +1,18 @@
 <template>
   <div class="show-tag">
     <ShowDemo :demoId="demo_id">
-      <Tag></Tag>
-      <!-- <Card></Card> -->
+      <Card></Card>
     </ShowDemo>
   </div>
 </template>
 
 <script>
-import Login from '@/components/Login/index.vue'
 import ShowDemo from "../ShowDemo.vue";
 import Card from '@/view/other/Card.vue'
-import Tag from "@/view/other/Tag.vue";
 export default {
   components: {
     ShowDemo,
-    Tag,Card,Login
+    Card
   },
   data: {
     // demo的id，用于获取demo代码code

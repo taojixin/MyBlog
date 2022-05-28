@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 
 // 首页
 const Home = () => import('@/components/Home')
-const Login = () => import('@/components/Login')
 
 // 侧边栏导航
 const About = () => import('@/view/About')
@@ -18,9 +17,9 @@ const Contact = () => import('@/view/Contact')
 const Notes = () => import('@/view/Notes')
 
 // 练习demo
-const ShowDemo = () => import('@/view/Demo/demo/ShowTag.vue')
-const Card = () => import('@/view/other/Card.vue')
-const Tag = () => import('@/view/other/Tag')
+const ShowTag = () => import('@/view/Demo/demo/ShowTag.vue')
+const ShowLogin = () => import('@/view/Demo/demo/ShowLogin')
+const ShowCard = () => import('@/view/Demo/demo/ShowCard')
 
 
 Vue.use(VueRouter)
@@ -40,10 +39,9 @@ const routes = [
   },
   { path: '/about', component: About }, // 首页
   { path: '/notes', component: Notes}, // 笔记页 markdown
-  { path: '/showdemo', component: ShowDemo}, // demo
-  { path: '/card', component: Card}, 
-  { path: '/tag', component: Tag},
-  { path: '/login', component: Login},
+  { path: '/showtag', component: ShowTag}, // demo
+  { path: '/showlogin', component: ShowLogin},
+  { path: '/showcard', component: ShowCard},
 ]
 
 const router = new VueRouter({

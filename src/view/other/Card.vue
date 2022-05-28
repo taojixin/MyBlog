@@ -1,28 +1,23 @@
 <template>
-  <div class="card" @click="jump()">
+  <div class="card">
     <!-- 正面那一层 -->
     <div class="front">
       <div class="icon">
         <img src="@/assets/logo.png" alt="" />
       </div>
-      <span>点击查看笔记</span>
+      <span>3D旋转</span>
     </div>
     <!-- 翻面那一层 -->
     <div class="back">
-      <span>Vue</span>
-      <p>Vue的基础部分</p>
+      <span>CSS</span>
+      <p>transform-style: preserve-3d;
+        perspective: 3000px;</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  methods: {
-    // 跳转的函数
-    jump() {
-      this.$router.push("/vuebasic");
-    },
-  },
 };
 </script>
 
@@ -30,7 +25,7 @@ export default {
 .card {
   display: flex;
   justify-content: center;
-  width: 80%;
+  width: 600px;
   margin: 10px auto;
   text-align: center;
   position: relative;
@@ -40,8 +35,8 @@ export default {
   .front {
     background-image: linear-gradient(
       to right,
-      rgba(31, 14, 89, 0.9),
-      rgba(40, 69, 123, 0.5)
+      rgba(161, 147, 207, 0.9),
+      rgba(126, 164, 235, 0.5)
     );
     // background: rgba(40, 69, 123, .9);
     width: 100%;
@@ -84,8 +79,8 @@ export default {
       ),
       radial-gradient(
           at top center,
-          rgba(255, 255, 255, 0.4) 0%,
-          rgba(0, 0, 0, 0.4) 120%
+          rgba(232, 187, 187, 0.4) 0%,
+          rgba(221, 39, 39, 0.4) 120%
         )
         #989898;
     background-blend-mode: multiply, multiply;
