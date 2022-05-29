@@ -17,7 +17,7 @@
         <hr />
         <li class="item" @click="jump('contact')" >
           <i class="iconfont icon-lianjie"></i>
-          联系
+          关于我
         </li>
       </ul>
       <!-- 左侧底部 -->

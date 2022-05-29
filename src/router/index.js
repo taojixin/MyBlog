@@ -20,6 +20,8 @@ const Notes = () => import('@/view/Notes')
 const ShowTag = () => import('@/view/Demo/demo/ShowTag.vue')
 const ShowLogin = () => import('@/view/Demo/demo/ShowLogin')
 const ShowCard = () => import('@/view/Demo/demo/ShowCard')
+const showBallJump = () => import('@/view/Demo/demo/ShowBallJump')
+const ShowFluxayBtn = () => import('@/view/Demo/demo/ShowFluxayBtn')
 
 
 Vue.use(VueRouter)
@@ -39,9 +41,12 @@ const routes = [
   },
   { path: '/about', component: About }, // 首页
   { path: '/notes', component: Notes}, // 笔记页 markdown
-  { path: '/showtag', component: ShowTag}, // demo
+  // demo
+  { path: '/showtag', component: ShowTag}, 
   { path: '/showlogin', component: ShowLogin},
   { path: '/showcard', component: ShowCard},
+  { path: '/showballjump', component: showBallJump},
+  { path: '/showfluxaybtn', component: ShowFluxayBtn},
 ]
 
 const router = new VueRouter({

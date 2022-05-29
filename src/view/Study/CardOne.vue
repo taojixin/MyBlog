@@ -65,7 +65,7 @@ h1 {
   width: 800px;
   height: 200px;
   // 半透明背景
-  background-color: rgba(75, 103, 214, 0.15);
+  background-color: rgba(162, 207, 230, .9);
   // 背景模糊（毛玻璃）
   backdrop-filter: blur(50px);
   margin: 0 auto;
